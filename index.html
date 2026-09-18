@@ -70,21 +70,9 @@
           </div>
           <div class="fine rise d3"><span>Works on your hotspot, no internet needed</span><span>Encrypted device-to-device</span><span>Nothing leaves your network</span></div>
         </div>
-        <div class="nest-stage" aria-hidden="true">
-          <div class="nest">
-            <div class="ring"></div><div class="ring r2"></div>
-            <div class="fill"></div>
-            <div class="floor"></div>
-            <div class="panel" style="transform:rotateZ(0deg) translateY(-103px) rotateX(-90deg)"></div>
-            <div class="panel" style="transform:rotateZ(60deg) translateY(-103px) rotateX(-90deg)"></div>
-            <div class="panel" style="transform:rotateZ(120deg) translateY(-103px) rotateX(-90deg)"></div>
-            <div class="panel" style="transform:rotateZ(180deg) translateY(-103px) rotateX(-90deg)"></div>
-            <div class="panel" style="transform:rotateZ(240deg) translateY(-103px) rotateX(-90deg)"></div>
-            <div class="panel" style="transform:rotateZ(300deg) translateY(-103px) rotateX(-90deg)"></div>
-            <div class="chip" style="transform:rotateZ(20deg) translate(26px,0) translateZ(40px) rotateX(-90deg)"><svg><use href="#i-image"/></svg></div>
-            <div class="chip" style="transform:rotateZ(150deg) translate(30px,0) translateZ(70px) rotateX(-90deg);animation-delay:-1.6s"><svg><use href="#i-file"/></svg></div>
-            <div class="chip" style="transform:rotateZ(270deg) translate(22px,0) translateZ(100px) rotateX(-90deg);animation-delay:-3.2s"><svg><use href="#i-link"/></svg></div>
-          </div>
+        <div class="nest-stage" id="nest-stage" aria-hidden="true">
+          <canvas id="nest"></canvas>
+          <span class="nest-hint">Drag to spin</span>
         </div>
       </div>
     </section>
@@ -129,9 +117,9 @@
           <p class="muted">This is the design the apps were built from — phone and desktop side by side. Drag the nest or the orbit to spin them, tap a device to open its box, and press <strong>Run handoff demo</strong> to watch a full drop-and-fetch between the two.</p>
         </div>
         <div class="demo-frame">
-          <iframe src="demo/" title="DropNest interactive prototype" loading="lazy" allow="clipboard-write"></iframe>
+          <iframe src="/demo" title="DropNest interactive prototype" loading="lazy" allow="clipboard-write"></iframe>
         </div>
-        <p class="demo-note"><a class="btn ghost" href="demo/" target="_blank" rel="noopener">Open the prototype full screen ↗</a></p>
+        <p class="demo-note"><a class="btn ghost" href="/demo" target="_blank" rel="noopener">Open the prototype full screen ↗</a></p>
       </div>
     </section>
 
@@ -196,6 +184,7 @@
   </footer>
 
   <script src="links.js"></script>
+  <script src="nest.js"></script>
   <script>
     (function () {
       var L = window.DROPNEST_LINKS || {};
