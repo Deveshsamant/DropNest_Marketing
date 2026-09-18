@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DropNest privacy policy</title>
+  <meta name="description" content="DropNest privacy policy: no accounts, no servers, no analytics. Your data stays on your devices and moves only across your own network.">
+  <meta name="theme-color" content="#161826">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>try { if (localStorage.getItem("dn-theme") === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}</script>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="./"><img src="assets/logo-192.png" alt=""> DropNest</a>
+      <nav class="nav-links" aria-label="Sections"><a href="./#download">Download</a><a href="./#faq">FAQ</a></nav>
+    </div>
+  </header>
+
+  <main class="wrap doc">
+    <span class="kicker">Privacy policy</span>
+    <h1>DropNest keeps your data on your devices.</h1>
+    <p>Effective 18 September 2026. This policy covers the DropNest apps for Android and Windows and this website.</p>
+
+    <h2>The short version</h2>
+    <ul>
+      <li><strong>No accounts.</strong> You never sign up or sign in.</li>
+      <li><strong>No servers.</strong> DropNest has no cloud. Files, text and links move directly between your own devices on your local network.</li>
+      <li><strong>No analytics, no ads, no trackers.</strong> The apps contain no third-party analytics or advertising SDKs and never phone home.</li>
+      <li><strong>No data is collected by us.</strong> We do not receive, store or process anything you drop into your box.</li>
+    </ul>
+
+    <h2>What the app stores on your device</h2>
+    <p>Everything below stays on the device it was created on. You can delete it at any time from inside the app or by uninstalling it.</p>
+    <div class="table-wrap"><table>
+      <tr><th>Data</th><th>Why</th><th>Where</th></tr>
+      <tr><td>Items in your box (files, photos, text, links)</td><td>So other devices you allow can fetch them</td><td>App-private storage (Android) or the original file location (Windows); until you remove them</td></tr>
+      <tr><td>Device name you choose</td><td>Shown to nearby devices so you can recognise your phone or PC</td><td>App settings</td></tr>
+      <tr><td>A self-generated TLS certificate and its fingerprint</td><td>Encrypts transfers and lets devices recognise each other</td><td>App-private storage; never sent anywhere except to the device you are transferring with</td></tr>
+      <tr><td>Trusted devices (name + fingerprint + pairing token)</td><td>“Always allow” so you are not asked again</td><td>App settings; removable in Settings → Trusted devices</td></tr>
+      <tr><td>Transfer history (device name, item names, sizes, time)</td><td>The Transfers screen</td><td>App-private storage; “Clear” removes it</td></tr>
+      <tr><td>Preferences (theme, port, save folder, PIN)</td><td>To remember your choices</td><td>App settings</td></tr>
+    </table></div>
+
+    <h2>What other devices can see</h2>
+    <p>On your local network DropNest announces your device name, its local IP address and certificate fingerprint so that other DropNest devices can find it. Another device can only list or fetch the contents of your box after you allow it (once, always, or by PIN), unless you deliberately set your box to “Anyone nearby”. These announcements never leave your Wi-Fi or hotspot network.</p>
+
+    <h2>Permissions</h2>
+    <p>Android asks for permissions that DropNest uses only for the features described:</p>
+    <ul>
+      <li><strong>Network / Wi-Fi state, multicast</strong> — discovering devices on the local network and transferring between them.</li>
+      <li><strong>Nearby Wi-Fi devices (Android 13+) or location (Android 12 and older)</strong> — required by Android to create a local-only hotspot. DropNest does not read or store your location.</li>
+      <li><strong>Notifications and foreground service</strong> — keeps receiving in the background and shows transfer progress. Started only when you open the app; stop it from the notification.</li>
+      <li><strong>Photos, videos, files</strong> — only the items you explicitly share or pick are copied into your box. DropNest does not scan your library.</li>
+    </ul>
+    <p>On Windows, the first launch triggers the Windows Firewall prompt because DropNest listens on your private network (TCP 47843, UDP 47842). It does not require administrator rights.</p>
+
+    <h2>Security</h2>
+    <p>Every transfer is encrypted with TLS using a certificate generated on your device. Devices verify each other's certificate fingerprint, so a device pretending to be one you trust is rejected. Your box can additionally require a PIN. DropNest cannot decrypt your transfers — there is no intermediary.</p>
+
+    <h2>This website</h2>
+    <p>This site is static and sets no cookies. It remembers your light/dark choice in your browser only. It is hosted on Vercel, whose servers may log standard request data (IP address, user agent) for operating the service; see <a href="https://vercel.com/legal/privacy-policy" rel="noopener" target="_blank">Vercel's privacy policy</a>. Fonts are loaded from Google Fonts.</p>
+
+    <h2>Children</h2>
+    <p>DropNest is a general-purpose utility not directed at children under 13, and we knowingly collect no personal information from anyone.</p>
+
+    <h2>Changes</h2>
+    <p>If this policy changes, the new version is published at this address with an updated effective date. Since the apps collect nothing, changes will typically only describe new local features.</p>
+
+    <h2>Contact</h2>
+    <p id="contact-line">Questions about privacy? Contact the developer through the <a id="src" href="https://github.com/Deveshsamant/DropBoxx" rel="noopener" target="_blank">project repository</a>.</p>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="brand" href="./"><img src="assets/logo-192.png" alt=""> DropNest</a>
+      <span>© 2026 DropNest</span>
+      <nav class="links" aria-label="Footer"><a href="./">Home</a><a id="github" href="https://github.com/Deveshsamant/DropBoxx">Source</a></nav>
+    </div>
+  </footer>
+
+  <script src="links.js"></script>
+  <script>
+    (function () {
+      var L = window.DROPNEST_LINKS || {};
+      if (L.github) { document.getElementById("github").href = L.github; document.getElementById("src").href = L.github; }
+      if (L.contact) document.getElementById("contact-line").innerHTML = 'Questions about privacy? Email <a href="mailto:' + L.contact + '">' + L.contact + '</a>.';
+    })();
+  </script>
+</body>
+</html>

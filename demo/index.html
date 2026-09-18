@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="_ds/nocturne-ea77ee21-c42e-4818-bd2d-7500614f9f97/styles.css">
+<script src="_ds/nocturne-ea77ee21-c42e-4818-bd2d-7500614f9f97/_ds_bundle.js"></script>
+<style>
+body{margin:0;background:#101220;overflow-x:hidden}
+a{color:#9184d9;text-decoration:none}
+a:hover{color:#b5abfc}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-thumb{background:rgba(147,151,171,.3);border-radius:99px}
+::-webkit-scrollbar-track{background:transparent}
+.scr[data-on="0"]{display:none!important}
+.scr{animation:apScreen .44s cubic-bezier(.2,.8,.2,1) both}
+[data-nav][data-active="1"]{background:var(--ap-accent-soft);color:var(--ap-accent)}
+[data-hit]{transition:background .18s,transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s}
+[data-hit]:hover{background:var(--ap-soft)}
+[data-lift]{transition:transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s,border-color .22s}
+[data-lift]:hover{transform:translateY(-3px) translateZ(14px);box-shadow:var(--ap-shadow-md)}
+[data-flight]{position:fixed;left:0;top:0;opacity:0;pointer-events:none;z-index:60;will-change:transform,opacity}
+@keyframes apRise{from{opacity:0;transform:translate3d(0,14px,-30px)}to{opacity:1;transform:none}}
+@keyframes apPop{from{opacity:0;transform:scale(.94)}to{opacity:1;transform:none}}
+@keyframes apScreen{from{opacity:0;transform:translate3d(20px,0,-70px)}to{opacity:1;transform:none}}
+@keyframes apDialog{0%{opacity:0;transform:translateY(22px) scale(.92)}100%{opacity:1;transform:none}}
+@keyframes apSheet{from{transform:translateY(105%)}to{transform:none}}
+@keyframes apRing{0%{opacity:.55;transform:rotateX(90deg) scale(.3)}100%{opacity:0;transform:rotateX(90deg) scale(1.75)}}
+@keyframes apSpin{to{transform:rotate(360deg)}}
+@keyframes apBreathe{0%,100%{opacity:.25}50%{opacity:.8}}
+@keyframes apSheen{0%{transform:translateX(-150%)}100%{transform:translateX(420%)}}
+@keyframes apBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes apStripe{to{background-position:32px 0}}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="--color-bg:#161826;--color-surface:#232532;--color-text:#e9e9ed;--color-accent:#9184d9;--color-divider:rgba(233,233,237,.16);--ap-bg:#161826;--ap-bg2:#1b1d2c;--ap-surface:#232532;--ap-surface2:#2a2d3c;--ap-text:#e9e9ed;--ap-muted:#9397ab;--ap-line:#3f424d;--ap-soft:rgba(233,233,237,.08);--ap-accent:#9184d9;--ap-accent-soft:rgba(145,132,217,.14);--ap-accent-line:rgba(145,132,217,.34);--ap-accent-deep:#423a6a;--ap-ok:#8fb59a;--ap-bad:#e0a3b4;--ap-shadow-sm:0 0 0 1px #3f424d;--ap-shadow-md:0 0 0 1px #595d6c,0 8px 22px rgba(0,0,0,.5);--ap-shadow-lg:0 0 0 1px #75798c,0 22px 56px rgba(0,0,0,.62);min-height:100vh;background:radial-gradient(1100px 680px at 16% -12%,#1f2239 0%,transparent 62%),radial-gradient(900px 560px at 92% 6%,#1b2036 0%,transparent 58%),#101220;color:var(--ap-text);font-family:var(--font-body),Inter,system-ui,sans-serif;padding:18px 18px 34px">
+
+  
+
+  <div style="display:flex;align-items:center;gap:14px;flex-wrap:wrap;max-width:1580px;margin:0 auto 4px">
+    <div style="display:flex;align-items:center;gap:10px">
+      <div style="width:30px;height:30px;border-radius:9px;border:1px solid var(--ap-accent-line);background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent)"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"></path></svg></div>
+      <div>
+        <div style="font-size:15px;font-weight:500;letter-spacing:-.01em;line-height:1.15">DropNest</div>
+        <div style="font-size:11px;color:var(--ap-muted);line-height:1.2">Android &amp; desktop · interactive</div>
+      </div>
+    </div>
+    <div style="flex:1"></div>
+    <div ref="{{ viewSegRef }}" style="display:flex;gap:3px;padding:3px;border-radius:10px;border:1px solid var(--ap-soft);background:rgba(35,37,50,.5)">
+      <button onClick="{{ viewBoth }}" data-nav data-view="both" class="btn" style="font-size:12px;padding:5px 11px;border-radius:7px">Both</button>
+      <button onClick="{{ viewPhone }}" data-nav data-view="phone" class="btn" style="font-size:12px;padding:5px 11px;border-radius:7px">Phone</button>
+      <button onClick="{{ viewDesk }}" data-nav data-view="desktop" class="btn" style="font-size:12px;padding:5px 11px;border-radius:7px">Desktop</button>
+    </div>
+    <button onClick="{{ goOnboard }}" class="btn btn-secondary" style="font-size:12px;padding:6px 12px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"></path></svg>First run</button>
+    <button onClick="{{ toggleTheme }}" class="btn btn-secondary" style="font-size:12px;padding:6px 12px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"></path></svg><span ref="{{ themeLabelRef }}">Light</span></button>
+    <button onClick="{{ runDemo }}" class="btn btn-primary" style="font-size:12px;padding:6px 13px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"></path></svg>Run handoff demo</button>
+  </div>
+
+  <div ref="{{ stageWrapRef }}" style="max-width:1580px;margin:0 auto;position:relative">
+    <div ref="{{ stageRef }}" style="display:flex;align-items:center;justify-content:center;gap:44px;width:max-content;margin:0 auto;perspective:2600px;perspective-origin:50% 38%;transform-origin:50% 0;padding:20px 0">
+
+      <sc-if value="{{ showDesktop }}" hint-placeholder-val="{{ true }}">
+      <div ref="{{ deskFrameRef }}" style="flex:0 0 auto;transform-style:preserve-3d;animation:apPop .66s cubic-bezier(.2,.8,.2,1) both">
+        <div style="width:1180px;height:772px;border-radius:14px;overflow:hidden;background:var(--ap-bg);box-shadow:var(--ap-shadow-lg),0 56px 110px -44px rgba(0,0,0,.8);display:flex;flex-direction:column;position:relative">
+          <div style="height:38px;flex:0 0 38px;display:flex;align-items:center;gap:10px;padding:0 13px;background:var(--ap-bg2);border-bottom:1px solid var(--ap-soft)">
+            <div style="display:flex;gap:6px">
+              <div style="width:11px;height:11px;border-radius:50%;background:#8c5a63"></div>
+              <div style="width:11px;height:11px;border-radius:50%;background:#8c7a5a"></div>
+              <div style="width:11px;height:11px;border-radius:50%;background:#5a8c69"></div>
+            </div>
+            <div style="flex:1;text-align:center;font-size:11.5px;color:var(--ap-muted)">DropNest — STUDIO-PC</div>
+            <div style="width:52px"></div>
+          </div>
+          <div style="flex:1;display:flex;min-height:0;position:relative">
+            <div style="flex:0 0 212px;border-right:1px solid var(--ap-soft);background:var(--ap-bg2);display:flex;flex-direction:column;padding:15px 11px">
+              <div style="padding:0 7px 11px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">This device</div>
+              <div style="display:flex;align-items:center;gap:9px;padding:9px;border-radius:10px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);margin-bottom:16px">
+                <div style="width:32px;height:32px;border-radius:8px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent)"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h32A8,8,0,0,1,216,72Zm-8,24H176a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm40-48V208a16,16,0,0,1-16,16H152a16,16,0,0,1-16-16V192H96v16h16a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H80V192H32A24,24,0,0,1,8,168V96A24,24,0,0,1,32,72H136V48a16,16,0,0,1,16-16h80A16,16,0,0,1,248,48ZM136,176V88H32a8,8,0,0,0-8,8v72a8,8,0,0,0,8,8Zm96,32V48H152V208h80Zm-40-40a12,12,0,1,0,12,12A12,12,0,0,0,192,168Z"></path></svg></div>
+                <div style="min-width:0">
+                  <div style="font-size:13px;font-weight:500">STUDIO-PC</div>
+                  <div ref="{{ deskVisRef }}" style="font-size:10px;color:var(--ap-accent)">Visible · 192.168.1.20</div>
+                </div>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:2px">
+                <button onClick="{{ dkBox }}" data-nav data-dnav="box" class="btn" style="justify-content:flex-start;gap:10px;padding:9px 10px;border-radius:9px;font-size:13px;width:100%"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"></path></svg>My box<span ref="{{ dkCountRef }}" style="margin-left:auto;font-size:10.5px;color:var(--ap-muted)">4</span></button>
+                <button onClick="{{ dkDevices }}" data-nav data-dnav="devices" class="btn" style="justify-content:flex-start;gap:10px;padding:9px 10px;border-radius:9px;font-size:13px;width:100%"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M140,204a12,12,0,1,1-12-12A12,12,0,0,1,140,204ZM237.08,87A172,172,0,0,0,18.92,87,8,8,0,0,0,29.08,99.37a156,156,0,0,1,197.84,0A8,8,0,0,0,237.08,87ZM205,122.77a124,124,0,0,0-153.94,0A8,8,0,0,0,61,135.31a108,108,0,0,1,134.06,0,8,8,0,0,0,11.24-1.3A8,8,0,0,0,205,122.77Zm-32.26,35.76a76.05,76.05,0,0,0-89.42,0,8,8,0,0,0,9.42,12.94,60,60,0,0,1,70.58,0,8,8,0,1,0,9.42-12.94Z"></path></svg>Devices<span style="margin-left:auto;font-size:10.5px;color:var(--ap-muted)">4</span></button>
+                <button onClick="{{ dkTransfers }}" data-nav data-dnav="transfers" class="btn" style="justify-content:flex-start;gap:10px;padding:9px 10px;border-radius:9px;font-size:13px;width:100%"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z"></path></svg>Transfers<span ref="{{ dkBadgeRef }}" style="margin-left:auto;font-size:10px;padding:1px 6px;border-radius:99px;background:var(--ap-accent-soft);color:var(--ap-accent);border:1px solid var(--ap-accent-line);opacity:0">1</span></button>
+                <button onClick="{{ dkSettings }}" data-nav data-dnav="settings" class="btn" style="justify-content:flex-start;gap:10px;padding:9px 10px;border-radius:9px;font-size:13px;width:100%"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm109.94-52.79a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A112.1,112.1,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.62a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21Zm-15,34.91-28.57,16.25a8,8,0,0,0-3,3c-.58,1-1.19,2.06-1.81,3.06a7.94,7.94,0,0,0-1.22,4.21l-.15,32.25a95.89,95.89,0,0,1-25.37,14.3L134,199.13a8,8,0,0,0-3.91-1h-.19c-1.21,0-2.43,0-3.64,0a8.08,8.08,0,0,0-4.1,1l-28.84,16.1A96,96,0,0,1,67.88,201l-.11-32.2a8,8,0,0,0-1.22-4.22c-.62-1-1.23-2-1.8-3.06a8.09,8.09,0,0,0-3-3.06l-28.6-16.29a90.49,90.49,0,0,1,0-28.26L61.67,97.63a8,8,0,0,0,3-3c.58-1,1.19-2.06,1.81-3.06a7.94,7.94,0,0,0,1.22-4.21l.15-32.25a95.89,95.89,0,0,1,25.37-14.3L122,56.87a8,8,0,0,0,4.1,1c1.21,0,2.43,0,3.64,0a8.08,8.08,0,0,0,4.1-1l28.84-16.1A96,96,0,0,1,188.12,55l.11,32.2a8,8,0,0,0,1.22,4.22c.62,1,1.23,2,1.8,3.06a8.09,8.09,0,0,0,3,3.06l28.6,16.29A90.49,90.49,0,0,1,222.9,142.12Z"></path></svg>Settings</button>
+              </div>
+              <div style="flex:1"></div>
+              <div ref="{{ dkProRef }}" style="border:1px solid var(--ap-accent-line);border-radius:11px;padding:11px;background:linear-gradient(165deg,var(--ap-accent-soft),transparent)">
+                <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px;color:var(--ap-accent)"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"></path></svg><span style="font-size:12px;font-weight:500">DropNest Pro</span></div>
+                <div ref="{{ dkProBodyRef }}" style="font-size:10.5px;color:var(--ap-muted);line-height:1.45;margin-bottom:8px">Folders, clipboard sync, QR pairing and browser receive.</div>
+                <button onClick="{{ unlockPro }}" ref="{{ dkProBtnRef }}" class="btn btn-primary btn-block" style="font-size:11px;padding:5px 8px;margin:0">Unlock — €9 once</button>
+              </div>
+            </div>
+
+            <div style="flex:1;min-width:0;position:relative;background:var(--ap-bg)">
+
+              <div class="scr" data-dscr="box" data-screen-label="Desktop · My box" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:20px 24px 0;display:flex;align-items:flex-end;gap:14px">
+                  <div>
+                    <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:5px">Always yours</div>
+                    <h2 style="font-size:26px;margin:0 0 3px">My box</h2>
+                    <div ref="{{ dkBoxMetaRef }}" style="font-size:12.5px;color:var(--ap-muted)">4 items · 18.2 MB · synced to this device only</div>
+                  </div>
+                  <div style="flex:1"></div>
+                  <button onClick="{{ addItem }}" class="btn btn-secondary" style="font-size:12px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg>Add files</button>
+                  <button onClick="{{ sendAll }}" class="btn btn-primary" style="font-size:12px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"></path></svg>Send to…</button>
+                </div>
+                <div style="flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:22px;padding:16px 24px 22px">
+                  <div style="display:flex;flex-direction:column;gap:12px;min-width:0">
+                    <div data-drag="nest" style="flex:1;min-height:0;border-radius:14px;background:radial-gradient(520px 280px at 50% 16%,var(--ap-accent-soft),transparent 68%),var(--ap-bg2);box-shadow:var(--ap-shadow-sm);position:relative;perspective:1000px;perspective-origin:50% 42%;cursor:grab;touch-action:none;overflow:hidden">
+                      <div style="position:absolute;left:12px;top:11px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">Your nest</div>
+                      <div data-nest="desk" style="position:absolute;left:50%;top:52%;transform-style:preserve-3d;transform:translate(-50%,-50%) rotateX(-19deg)">
+                        <div style="position:absolute;left:-104px;top:-104px;width:208px;height:208px;transform:rotateX(90deg) translateZ(-62px);background:radial-gradient(circle,var(--ap-accent-soft) 0%,transparent 66%);border-radius:50%"></div>
+                        <div style="position:absolute;left:-70px;top:-70px;width:140px;height:140px;border:1px solid var(--ap-accent-line);border-radius:50%;animation:apRing 3.4s linear infinite"></div>
+                        <div style="position:absolute;left:-70px;top:-70px;width:140px;height:140px;border:1px solid var(--ap-accent-line);border-radius:50%;animation:apRing 3.4s 1.7s linear infinite"></div>
+                        <div data-hex style="position:absolute;left:-63px;top:-55px;width:126px;height:110px;transform:rotateX(90deg) translateZ(58px);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:linear-gradient(160deg,var(--ap-surface2),var(--ap-bg2));box-shadow:inset 0 0 0 1px var(--ap-accent-line)"></div>
+                        <div data-fill style="position:absolute;left:-63px;top:-55px;width:126px;height:110px;transform:rotateX(90deg) translateZ(22px);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:linear-gradient(160deg,var(--ap-accent),var(--ap-accent-deep));opacity:.5;transition:transform .7s cubic-bezier(.2,.8,.2,1)"></div>
+                        <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(0deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.16),rgba(145,132,217,.03));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                        <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(60deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.13),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                        <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(120deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.1),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                        <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(180deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.16),rgba(145,132,217,.03));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                        <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(240deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.13),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                        <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(300deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.1),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                        <div data-nest-items style="position:absolute;left:0;top:0;transform-style:preserve-3d">
+                          <sc-for list="{{ nestItems }}" as="it" hint-placeholder-count="4">
+                            <div data-nest-item style="position:absolute;left:-23px;top:-15px;width:46px;height:30px;border-radius:7px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent)"><sc-if value="{{ it.isImg }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></sc-if><sc-if value="{{ it.isFile }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></sc-if><sc-if value="{{ it.isTxt }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,48H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,24H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-48,40H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"></path></svg></sc-if><sc-if value="{{ it.isLink }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg></sc-if><sc-if value="{{ it.isClip }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"></path></svg></sc-if><sc-if value="{{ it.isFolder }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></sc-if></div>
+                          </sc-for>
+                        </div>
+                      </div>
+                      <div style="position:absolute;left:12px;bottom:11px;right:12px;display:flex;align-items:center;gap:8px">
+                        <div style="flex:1;height:5px;border-radius:99px;background:var(--ap-soft);overflow:hidden"><div ref="{{ dkGaugeRef }}" style="height:100%;width:24%;border-radius:99px;background:linear-gradient(90deg,var(--ap-accent-deep),var(--ap-accent));transition:width .7s cubic-bezier(.2,.8,.2,1)"></div></div>
+                        <div ref="{{ dkGaugeTxtRef }}" style="font-size:10.5px;color:var(--ap-muted)">18.2 MB / 2 GB</div>
+                      </div>
+                    </div>
+                    <div onClick="{{ addItem }}" data-hit style="flex:0 0 auto;border:1px dashed var(--ap-accent-line);border-radius:12px;padding:13px;display:flex;align-items:center;gap:11px;cursor:pointer;background:var(--ap-accent-soft)">
+                      <div style="width:34px;height:34px;border-radius:9px;background:var(--ap-surface);display:grid;place-items:center;color:var(--ap-accent);box-shadow:var(--ap-shadow-sm)"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg></div>
+                      <div style="min-width:0">
+                        <div style="font-size:13px;font-weight:500">Drop anything here</div>
+                        <div style="font-size:11px;color:var(--ap-muted)">Files, folders, text, links — no peer needed</div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="min-width:0;display:flex;flex-direction:column;background:var(--ap-surface);border-radius:14px;box-shadow:var(--ap-shadow-sm);overflow:hidden">
+                    <div style="flex:0 0 auto;display:flex;align-items:center;gap:9px;padding:11px 14px;border-bottom:1px solid var(--ap-soft)">
+                      <svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-muted)"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"></path></svg>
+                      <span style="font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">Contents</span>
+                      <div style="flex:1"></div>
+                      <span class="tag tag-outline" style="font-size:10.5px">Newest first</span>
+                    </div>
+                    <div onClick="{{ onListClick }}" style="flex:1;min-height:0;overflow:auto;padding:7px">
+                      <sc-for list="{{ items }}" as="it" hint-placeholder-count="4">
+                        <div data-hit data-lift style="display:flex;align-items:center;gap:11px;padding:10px;border-radius:10px;margin-bottom:3px;transform-style:preserve-3d">
+                          <div style="width:36px;height:36px;border-radius:9px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><sc-if value="{{ it.isImg }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></sc-if><sc-if value="{{ it.isFile }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></sc-if><sc-if value="{{ it.isTxt }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,48H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,24H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-48,40H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"></path></svg></sc-if><sc-if value="{{ it.isLink }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg></sc-if><sc-if value="{{ it.isClip }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"></path></svg></sc-if><sc-if value="{{ it.isFolder }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></sc-if></div>
+                          <div style="min-width:0;flex:1">
+                            <div style="font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ it.name }}</div>
+                            <div style="font-size:11px;color:var(--ap-muted)">{{ it.meta }}</div>
+                          </div>
+                          <button data-act="send" data-id="{{ it.id }}" class="btn btn-ghost" style="font-size:11.5px;padding:4px 8px"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"></path></svg>Send</button>
+                          <button data-act="del" data-id="{{ it.id }}" class="btn btn-secondary btn-icon" style="width:30px;height:30px"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d="M216,48H176V40a24,24,0,0,0-24-24H104A24,24,0,0,0,80,40v8H40a8,8,0,0,0,0,16h8V208a16,16,0,0,0,16,16H192a16,16,0,0,0,16-16V64h8a8,8,0,0,0,0-16ZM96,40a8,8,0,0,1,8-8h48a8,8,0,0,1,8,8v8H96Zm96,168H64V64H192ZM112,104v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Zm48,0v64a8,8,0,0,1-16,0V104a8,8,0,0,1,16,0Z"></path></svg></button>
+                        </div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scr" data-dscr="devices" data-on="0" data-screen-label="Desktop · Devices" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:20px 24px 0;display:flex;align-items:flex-end;gap:14px">
+                  <div>
+                    <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:5px">On this network</div>
+                    <h2 style="font-size:26px;margin:0 0 3px">Devices</h2>
+                    <div style="font-size:12.5px;color:var(--ap-muted)">4 nearby · you are visible as STUDIO-PC</div>
+                  </div>
+                  <div style="flex:1"></div>
+                  <button onClick="{{ toggleVisible }}" ref="{{ dkVisBtnRef }}" class="btn btn-secondary" style="font-size:12px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"></path></svg>Visible</button>
+                  <button onClick="{{ openQr }}" class="btn btn-primary" style="font-size:12px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm0,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48ZM200,40H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-64,72V144a8,8,0,0,1,16,0v32a8,8,0,0,1-16,0Zm80-16a8,8,0,0,1-8,8H184v40a8,8,0,0,1-8,8H144a8,8,0,0,1,0-16h24V144a8,8,0,0,1,16,0v8h24A8,8,0,0,1,216,160Zm0,32v16a8,8,0,0,1-16,0V192a8,8,0,0,1,16,0Z"></path></svg>Pair with QR</button>
+                </div>
+                <div style="flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 316px;gap:22px;padding:14px 24px 22px">
+                  <div data-drag="orbit" data-r="158" style="min-width:0;border-radius:14px;background:radial-gradient(600px 340px at 50% 42%,var(--ap-accent-soft),transparent 66%),var(--ap-bg2);box-shadow:var(--ap-shadow-sm);position:relative;perspective:1200px;perspective-origin:50% 44%;cursor:grab;touch-action:none;overflow:hidden">
+                    <div style="position:absolute;left:14px;top:12px;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">Drag to orbit</div>
+                    <div data-orbit style="position:absolute;left:50%;top:54%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(-66deg)">
+                      <div style="position:absolute;left:-158px;top:-158px;width:316px;height:316px;border:1px solid var(--ap-accent-line);border-radius:50%;opacity:.5"></div>
+                      <div style="position:absolute;left:-108px;top:-108px;width:216px;height:216px;border:1px dashed var(--ap-soft);border-radius:50%"></div>
+                      <div data-orbit-item data-peer="0" style="position:absolute;left:-63px;top:-33px;width:126px;transform-style:preserve-3d;cursor:pointer">
+                        <div data-lift style="padding:9px;border-radius:11px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:flex;align-items:center;gap:8px;border:1px solid transparent">
+                          <div style="width:30px;height:30px;border-radius:8px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div>
+                          <div style="min-width:0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">MIRA-PHONE</div><div style="font-size:10px;color:var(--ap-accent)">3 in box</div></div>
+                        </div>
+                      </div>
+                      <div data-orbit-item data-peer="1" style="position:absolute;left:-63px;top:-33px;width:126px;transform-style:preserve-3d;cursor:pointer">
+                        <div data-lift style="padding:9px;border-radius:11px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:flex;align-items:center;gap:8px;border:1px solid transparent">
+                          <div style="width:30px;height:30px;border-radius:8px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M232,168h-8V72a24,24,0,0,0-24-24H56A24,24,0,0,0,32,72v96H24a8,8,0,0,0-8,8v16a24,24,0,0,0,24,24H216a24,24,0,0,0,24-24V176A8,8,0,0,0,232,168ZM48,72a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8v96H48ZM224,192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8v-8H224ZM152,88a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,88Z"></path></svg></div>
+                          <div style="min-width:0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">RAVI-AIR</div><div style="font-size:10px;color:var(--ap-muted)">idle</div></div>
+                        </div>
+                      </div>
+                      <div data-orbit-item data-peer="2" style="position:absolute;left:-63px;top:-33px;width:126px;transform-style:preserve-3d;cursor:pointer">
+                        <div data-lift style="padding:9px;border-radius:11px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:flex;align-items:center;gap:8px;border:1px solid transparent">
+                          <div style="width:30px;height:30px;border-radius:8px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div>
+                          <div style="min-width:0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">PIXEL-8</div><div style="font-size:10px;color:var(--ap-muted)">idle</div></div>
+                        </div>
+                      </div>
+                      <div data-orbit-item data-peer="3" style="position:absolute;left:-63px;top:-33px;width:126px;transform-style:preserve-3d;cursor:pointer">
+                        <div data-lift style="padding:9px;border-radius:11px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:flex;align-items:center;gap:8px;border:1px solid transparent">
+                          <div style="width:30px;height:30px;border-radius:8px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm87.62,96H175.79C174,83.49,159.94,57.67,148.41,42.4A88.19,88.19,0,0,1,215.63,120ZM96.23,136h63.54c-2.31,41.61-22.23,67.11-31.77,77C118.45,203.1,98.54,177.6,96.23,136Zm0-16C98.54,78.39,118.46,52.89,128,43c9.55,9.93,29.46,35.43,31.77,77Zm11.36-77.6C96.06,57.67,82,83.49,80.21,120H40.37A88.19,88.19,0,0,1,107.59,42.4ZM40.37,136H80.21c1.82,36.51,15.85,62.33,27.38,77.6A88.19,88.19,0,0,1,40.37,136Zm108,77.6c11.53-15.27,25.56-41.09,27.38-77.6h39.84A88.19,88.19,0,0,1,148.41,213.6Z"></path></svg></div>
+                          <div style="min-width:0"><div style="font-size:12px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Browser</div><div style="font-size:10px;color:var(--ap-muted)">web receive</div></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);pointer-events:none;text-align:center">
+                      <div style="width:92px;height:92px;border-radius:50%;border:1px solid var(--ap-accent-line);background:radial-gradient(circle,var(--ap-accent-soft),transparent 70%);display:grid;place-items:center;color:var(--ap-accent);animation:apBob 5s ease-in-out infinite"><svg width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h32A8,8,0,0,1,216,72Zm-8,24H176a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm40-48V208a16,16,0,0,1-16,16H152a16,16,0,0,1-16-16V192H96v16h16a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H80V192H32A24,24,0,0,1,8,168V96A24,24,0,0,1,32,72H136V48a16,16,0,0,1,16-16h80A16,16,0,0,1,248,48ZM136,176V88H32a8,8,0,0,0-8,8v72a8,8,0,0,0,8,8Zm96,32V48H152V208h80Zm-40-40a12,12,0,1,0,12,12A12,12,0,0,0,192,168Z"></path></svg></div>
+                      <div style="margin-top:7px;font-size:11.5px;font-weight:500">STUDIO-PC</div>
+                      <div style="font-size:10px;color:var(--ap-muted)">this device</div>
+                    </div>
+                  </div>
+                  <div style="min-width:0;display:flex;flex-direction:column;gap:11px">
+                    <div style="background:var(--ap-surface);border-radius:13px;box-shadow:var(--ap-shadow-sm);padding:13px">
+                      <div style="font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted);margin-bottom:9px">Nearby</div>
+                      <div onClick="{{ onPeerListClick }}" style="display:flex;flex-direction:column;gap:4px">
+                        <div data-hit data-peer="0" style="display:flex;align-items:center;gap:10px;padding:9px;border-radius:10px;cursor:pointer"><div style="width:32px;height:32px;border-radius:8px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent)"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:500">MIRA-PHONE</div><div style="font-size:10.5px;color:var(--ap-accent)">3 items waiting</div></div><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-muted)"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></div>
+                        <div data-hit data-peer="1" style="display:flex;align-items:center;gap:10px;padding:9px;border-radius:10px;cursor:pointer"><div style="width:32px;height:32px;border-radius:8px;background:var(--ap-soft);display:grid;place-items:center;color:var(--ap-muted)"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M232,168h-8V72a24,24,0,0,0-24-24H56A24,24,0,0,0,32,72v96H24a8,8,0,0,0-8,8v16a24,24,0,0,0,24,24H216a24,24,0,0,0,24-24V176A8,8,0,0,0,232,168ZM48,72a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8v96H48ZM224,192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8v-8H224ZM152,88a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,88Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:500">RAVI-AIR</div><div style="font-size:10.5px;color:var(--ap-muted)">macOS · idle</div></div><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-muted)"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></div>
+                        <div data-hit data-peer="2" style="display:flex;align-items:center;gap:10px;padding:9px;border-radius:10px;cursor:pointer"><div style="width:32px;height:32px;border-radius:8px;background:var(--ap-soft);display:grid;place-items:center;color:var(--ap-muted)"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:500">PIXEL-8</div><div style="font-size:10.5px;color:var(--ap-muted)">Android · idle</div></div><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-muted)"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></div>
+                      </div>
+                    </div>
+                    <div style="background:var(--ap-surface);border-radius:13px;box-shadow:var(--ap-shadow-sm);padding:13px">
+                      <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px;color:var(--ap-accent)"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm87.62,96H175.79C174,83.49,159.94,57.67,148.41,42.4A88.19,88.19,0,0,1,215.63,120ZM96.23,136h63.54c-2.31,41.61-22.23,67.11-31.77,77C118.45,203.1,98.54,177.6,96.23,136Zm0-16C98.54,78.39,118.46,52.89,128,43c9.55,9.93,29.46,35.43,31.77,77Zm11.36-77.6C96.06,57.67,82,83.49,80.21,120H40.37A88.19,88.19,0,0,1,107.59,42.4ZM40.37,136H80.21c1.82,36.51,15.85,62.33,27.38,77.6A88.19,88.19,0,0,1,40.37,136Zm108,77.6c11.53-15.27,25.56-41.09,27.38-77.6h39.84A88.19,88.19,0,0,1,148.41,213.6Z"></path></svg><span style="font-size:12px;font-weight:500">Web receive</span><span class="tag tag-accent" style="margin-left:auto;font-size:9.5px">Pro</span></div>
+                      <div style="font-size:11.5px;color:var(--ap-muted);line-height:1.5;margin-bottom:9px">Anyone on the network can open a page and drop into your box — no app needed.</div>
+                      <div style="display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:9px;background:var(--ap-bg2);font-size:11.5px;font-family:ui-monospace,monospace;color:var(--ap-accent)">http://192.168.1.20:7420</div>
+                    </div>
+                    <div style="flex:1"></div>
+                    <div style="display:flex;align-items:center;gap:9px;padding:11px;border-radius:12px;background:var(--ap-bg2);box-shadow:var(--ap-shadow-sm)">
+                      <svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-accent);flex:0 0 auto"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path></svg>
+                      <div style="font-size:11px;color:var(--ap-muted);line-height:1.45">Transfers stay on your LAN and are end-to-end encrypted.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scr" data-dscr="peer" data-on="0" data-screen-label="Desktop · Peer box" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:18px 24px 0;display:flex;align-items:center;gap:12px">
+                  <button onClick="{{ dkDevices }}" class="btn btn-secondary btn-icon" style="width:32px;height:32px"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg></button>
+                  <div style="width:38px;height:38px;border-radius:10px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent)"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div>
+                  <div>
+                    <h2 ref="{{ dkPeerNameRef }}" style="font-size:21px;margin:0 0 2px">MIRA-PHONE</h2>
+                    <div style="font-size:11.5px;color:var(--ap-muted)">Their box · 3 items shared with you</div>
+                  </div>
+                  <div style="flex:1"></div>
+                  <button onClick="{{ saveAll }}" class="btn btn-primary" style="font-size:12px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg>Save all to my box</button>
+                </div>
+                <div style="flex:1;min-height:0;overflow:auto;padding:16px 24px 22px">
+                  <div onClick="{{ onListClick }}" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;perspective:900px">
+                    <sc-for list="{{ peerItems }}" as="it" hint-placeholder-count="3">
+                      <div data-lift style="background:var(--ap-surface);border-radius:13px;box-shadow:var(--ap-shadow-sm);padding:13px;transform-style:preserve-3d;display:flex;flex-direction:column;gap:9px">
+                        <div style="height:82px;border-radius:9px;background:linear-gradient(150deg,var(--ap-accent-soft),var(--ap-bg2));display:grid;place-items:center;color:var(--ap-accent)"><sc-if value="{{ it.isImg }}"><svg width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></sc-if><sc-if value="{{ it.isFile }}"><svg width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></sc-if><sc-if value="{{ it.isTxt }}"><svg width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,48H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,24H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-48,40H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"></path></svg></sc-if><sc-if value="{{ it.isLink }}"><svg width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg></sc-if><sc-if value="{{ it.isClip }}"><svg width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"></path></svg></sc-if><sc-if value="{{ it.isFolder }}"><svg width="30" height="30" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></sc-if></div>
+                        <div style="min-width:0"><div style="font-size:12.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ it.name }}</div><div style="font-size:10.5px;color:var(--ap-muted)">{{ it.meta }}</div></div>
+                        <button data-act="save" data-id="{{ it.id }}" class="btn btn-secondary btn-block" style="font-size:11.5px;margin:0"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg>Save</button>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scr" data-dscr="transfers" data-on="0" data-screen-label="Desktop · Transfers" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:20px 24px 0">
+                  <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:5px">Live</div>
+                  <h2 style="font-size:26px;margin:0 0 3px">Transfers</h2>
+                  <div style="font-size:12.5px;color:var(--ap-muted)">Everything that moved in or out of this device</div>
+                </div>
+                <div style="flex:1;min-height:0;overflow:auto;padding:16px 24px 22px;display:flex;flex-direction:column;gap:14px">
+                  <div ref="{{ dkActiveRef }}" style="border-radius:14px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);padding:15px;position:relative;overflow:hidden">
+                    <div style="position:absolute;inset:0;background:linear-gradient(100deg,transparent,var(--ap-accent-soft),transparent);width:32%;animation:apSheen 2.6s linear infinite;pointer-events:none"></div>
+                    <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px;position:relative">
+                      <div style="width:34px;height:34px;border-radius:9px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent)"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg></div>
+                      <div style="flex:1;min-width:0">
+                        <div ref="{{ dkActTitleRef }}" style="font-size:13.5px;font-weight:500">Receiving from MIRA-PHONE</div>
+                        <div ref="{{ dkActSubRef }}" style="font-size:11.5px;color:var(--ap-muted)">3 items · 8.4 MB · 12.1 MB/s</div>
+                      </div>
+                      <div ref="{{ dkActPctRef }}" style="font-size:19px;font-weight:500;font-variant-numeric:tabular-nums;color:var(--ap-accent)">0%</div>
+                    </div>
+                    <div style="height:110px;border-radius:11px;background:var(--ap-bg2);position:relative;overflow:hidden;perspective:700px;margin-bottom:12px">
+                      <div style="position:absolute;left:16px;top:50%;transform:translateY(-50%);width:44px;height:52px;border-radius:9px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);display:grid;place-items:center;color:var(--ap-muted)"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div>
+                      <div style="position:absolute;right:16px;top:50%;transform:translateY(-50%);width:52px;height:52px;border-radius:9px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);display:grid;place-items:center;color:var(--ap-accent)"><svg width="22" height="22" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h32A8,8,0,0,1,216,72Zm-8,24H176a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm40-48V208a16,16,0,0,1-16,16H152a16,16,0,0,1-16-16V192H96v16h16a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H80V192H32A24,24,0,0,1,8,168V96A24,24,0,0,1,32,72H136V48a16,16,0,0,1,16-16h80A16,16,0,0,1,248,48ZM136,176V88H32a8,8,0,0,0-8,8v72a8,8,0,0,0,8,8Zm96,32V48H152V208h80Zm-40-40a12,12,0,1,0,12,12A12,12,0,0,0,192,168Z"></path></svg></div>
+                      <div style="position:absolute;left:72px;right:80px;top:50%;height:2px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,var(--ap-accent-line) 0 10px,transparent 10px 22px);background-size:32px 2px;animation:apStripe .8s linear infinite"></div>
+                      <div data-conveyor style="position:absolute;left:72px;right:80px;top:0;bottom:0;transform-style:preserve-3d">
+                        <div data-cv style="position:absolute;top:50%;left:0;width:38px;height:28px;margin-top:-14px;border-radius:7px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent)"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></div>
+                        <div data-cv style="position:absolute;top:50%;left:0;width:38px;height:28px;margin-top:-14px;border-radius:7px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent)"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></div>
+                        <div data-cv style="position:absolute;top:50%;left:0;width:38px;height:28px;margin-top:-14px;border-radius:7px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent)"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></div>
+                      </div>
+                    </div>
+                    <div style="height:6px;border-radius:99px;background:var(--ap-soft);overflow:hidden;position:relative"><div ref="{{ dkBarRef }}" style="height:100%;width:0%;border-radius:99px;background:linear-gradient(90deg,var(--ap-accent-deep),var(--ap-accent))"></div></div>
+                    <div style="display:flex;gap:8px;margin-top:12px;position:relative">
+                      <button onClick="{{ pauseTransfer }}" class="btn btn-secondary" style="font-size:11.5px">Pause</button>
+                      <button onClick="{{ cancelTransfer }}" class="btn btn-ghost" style="font-size:11.5px">Cancel</button>
+                      <div style="flex:1"></div>
+                      <span class="tag tag-outline" style="font-size:10.5px">LAN · encrypted</span>
+                    </div>
+                  </div>
+                  <div style="background:var(--ap-surface);border-radius:14px;box-shadow:var(--ap-shadow-sm);overflow:hidden">
+                    <div style="padding:11px 14px;border-bottom:1px solid var(--ap-soft);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">History</div>
+                    <table class="table" style="width:100%;font-size:12.5px">
+                      <thead><tr><th style="padding-left:14px">Item</th><th>Direction</th><th>Peer</th><th>Size</th><th style="padding-right:14px">When</th></tr></thead>
+                      <tbody>
+                        <tr><td style="padding-left:14px"><div style="display:flex;align-items:center;gap:9px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-accent)"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg>site-mock-v4.png</div></td><td><span class="tag tag-accent" style="font-size:10px">Received</span></td><td>MIRA-PHONE</td><td>2.4 MB</td><td style="padding-right:14px;color:var(--ap-muted)">2 min ago</td></tr>
+                        <tr><td style="padding-left:14px"><div style="display:flex;align-items:center;gap:9px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-accent)"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg>Q3-assets</div></td><td><span class="tag tag-outline" style="font-size:10px">Sent</span></td><td>RAVI-AIR</td><td>38 MB</td><td style="padding-right:14px;color:var(--ap-muted)">18 min ago</td></tr>
+                        <tr><td style="padding-left:14px"><div style="display:flex;align-items:center;gap:9px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-accent)"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg>figma.com/file/…</div></td><td><span class="tag tag-accent" style="font-size:10px">Received</span></td><td>PIXEL-8</td><td>—</td><td style="padding-right:14px;color:var(--ap-muted)">1 hr ago</td></tr>
+                        <tr><td style="padding-left:14px"><div style="display:flex;align-items:center;gap:9px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-bad)"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>keynote-final.mov</div></td><td><span class="tag tag-neutral" style="font-size:10px">Declined</span></td><td>Browser</td><td>412 MB</td><td style="padding-right:14px;color:var(--ap-muted)">Yesterday</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scr" data-dscr="settings" data-on="0" data-screen-label="Desktop · Settings" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:20px 24px 0">
+                  <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:5px">Preferences</div>
+                  <h2 style="font-size:26px;margin:0 0 3px">Settings</h2>
+                </div>
+                <div style="flex:1;min-height:0;overflow:auto;padding:16px 24px 22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;align-content:start">
+                  <div style="background:var(--ap-surface);border-radius:14px;box-shadow:var(--ap-shadow-sm);padding:15px;display:flex;flex-direction:column;gap:12px">
+                    <div style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">Identity</div>
+                    <label class="field" style="display:flex;flex-direction:column;gap:5px"><span style="font-size:11.5px;color:var(--ap-muted)">Device name</span><input class="input" value="STUDIO-PC" style="font-size:13px"></label>
+                    <div style="display:flex;align-items:center;gap:11px">
+                      <div style="flex:1"><div style="font-size:13px;font-weight:500">Visible to nearby devices</div><div style="font-size:11px;color:var(--ap-muted)">Others can see this device and send to it</div></div>
+                      <button onClick="{{ toggleVisible }}" data-switch="visible" style="width:44px;height:26px;border-radius:99px;border:1px solid var(--ap-accent-line);background:var(--ap-accent-soft);position:relative;cursor:pointer;flex:0 0 auto"><span data-knob style="position:absolute;top:2px;left:20px;width:20px;height:20px;border-radius:50%;background:var(--ap-accent);transition:left .24s cubic-bezier(.2,.8,.2,1)"></span></button>
+                    </div>
+                  </div>
+                  <div style="background:var(--ap-surface);border-radius:14px;box-shadow:var(--ap-shadow-sm);padding:15px;display:flex;flex-direction:column;gap:12px">
+                    <div style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">Appearance</div>
+                    <div style="font-size:13px;font-weight:500">Theme</div>
+                    <div ref="{{ themeSegRef }}" class="seg" onClick="{{ onThemeSeg }}" style="align-self:flex-start">
+                      <button class="seg-opt" data-theme="system" style="font-size:12px">System</button>
+                      <button class="seg-opt" data-theme="light" style="font-size:12px">Light</button>
+                      <button class="seg-opt" data-theme="dark" style="font-size:12px">Dark</button>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:11px">
+                      <div style="flex:1"><div style="font-size:13px;font-weight:500">Motion &amp; depth</div><div style="font-size:11px;color:var(--ap-muted)">3D nest, orbit and card flight</div></div>
+                      <button onClick="{{ toggleMotion }}" data-switch="motion" style="width:44px;height:26px;border-radius:99px;border:1px solid var(--ap-accent-line);background:var(--ap-accent-soft);position:relative;cursor:pointer;flex:0 0 auto"><span data-knob style="position:absolute;top:2px;left:20px;width:20px;height:20px;border-radius:50%;background:var(--ap-accent);transition:left .24s cubic-bezier(.2,.8,.2,1)"></span></button>
+                    </div>
+                  </div>
+                  <div style="background:var(--ap-surface);border-radius:14px;box-shadow:var(--ap-shadow-sm);padding:15px;display:flex;flex-direction:column;gap:12px">
+                    <div style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">Receiving</div>
+                    <div style="display:flex;align-items:center;gap:11px">
+                      <div style="flex:1"><div style="font-size:13px;font-weight:500">Ask before accepting</div><div style="font-size:11px;color:var(--ap-muted)">Off means trusted peers drop straight in</div></div>
+                      <button onClick="{{ toggleAsk }}" data-switch="ask" style="width:44px;height:26px;border-radius:99px;border:1px solid var(--ap-accent-line);background:var(--ap-accent-soft);position:relative;cursor:pointer;flex:0 0 auto"><span data-knob style="position:absolute;top:2px;left:20px;width:20px;height:20px;border-radius:50%;background:var(--ap-accent);transition:left .24s cubic-bezier(.2,.8,.2,1)"></span></button>
+                    </div>
+                    <label class="field" style="display:flex;flex-direction:column;gap:5px"><span style="font-size:11.5px;color:var(--ap-muted)">Save received files to</span><input class="input" value="~/DropNest" style="font-size:13px"></label>
+                    <button onClick="{{ simulateIncoming }}" class="btn btn-secondary" style="font-size:11.5px;align-self:flex-start"><svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg>Simulate incoming request</button>
+                  </div>
+                  <div style="background:linear-gradient(165deg,var(--ap-accent-soft),transparent),var(--ap-surface);border:1px solid var(--ap-accent-line);border-radius:14px;padding:15px;display:flex;flex-direction:column;gap:10px">
+                    <div style="display:flex;align-items:center;gap:7px;color:var(--ap-accent)"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"></path></svg><span style="font-size:13px;font-weight:500">DropNest Pro</span></div>
+                    <div style="font-size:12px;color:var(--ap-muted);line-height:1.55">One payment unlocks folder transfers, clipboard sync, QR pairing and the browser receive page. No account, no subscription.</div>
+                    <div style="display:flex;flex-wrap:wrap;gap:5px">
+                      <span class="tag tag-outline" style="font-size:10.5px">Folders</span><span class="tag tag-outline" style="font-size:10.5px">Clipboard sync</span><span class="tag tag-outline" style="font-size:10.5px">QR pairing</span><span class="tag tag-outline" style="font-size:10.5px">Web receive</span>
+                    </div>
+                    <button onClick="{{ unlockPro }}" ref="{{ dkProBtn2Ref }}" class="btn btn-primary" style="font-size:12px;align-self:flex-start;margin-top:2px">Unlock — €9 once</button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scr" data-dscr="onboard" data-on="0" data-screen-label="Desktop · First run" style="position:absolute;inset:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,430px);align-items:center;gap:20px;padding:0 34px;background:radial-gradient(700px 420px at 78% 50%,var(--ap-accent-soft),transparent 70%),var(--ap-bg)">
+                <div style="max-width:440px">
+                  <div style="font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:11px">Welcome to DropNest</div>
+                  <h1 style="font-size:40px;line-height:1.08;margin:0 0 13px">A box that<br>travels with you.</h1>
+                  <p style="font-size:14px;color:var(--ap-muted);line-height:1.6;max-width:390px">Drop files, photos, text or links into your nest — with no other device around. When a peer shows up, hand it over in one tap.</p>
+                  <div style="display:flex;flex-direction:column;gap:10px;margin:18px 0 22px">
+                    <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:7px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent);font-size:11.5px">1</div><span style="font-size:13px">Name this device</span></div>
+                    <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:7px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent);font-size:11.5px">2</div><span style="font-size:13px">Stay visible on your network</span></div>
+                    <div style="display:flex;align-items:center;gap:10px"><div style="width:26px;height:26px;border-radius:7px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent);font-size:11.5px">3</div><span style="font-size:13px">Start dropping</span></div>
+                  </div>
+                  <div style="display:flex;gap:9px;align-items:center">
+                    <input class="input" value="STUDIO-PC" style="font-size:13px;max-width:190px">
+                    <button onClick="{{ dkBox }}" class="btn btn-primary" style="font-size:13px">Open my nest<svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></button>
+                  </div>
+                </div>
+                <div data-drag="nest" style="height:420px;position:relative;perspective:1000px;perspective-origin:50% 44%;cursor:grab;touch-action:none">
+                  <div data-nest="onb" style="position:absolute;left:50%;top:50%;transform-style:preserve-3d;transform:translate(-50%,-50%) rotateX(-18deg) scale(1.28)">
+                    <div style="position:absolute;left:-104px;top:-104px;width:208px;height:208px;transform:rotateX(90deg) translateZ(-62px);background:radial-gradient(circle,var(--ap-accent-soft) 0%,transparent 66%);border-radius:50%"></div>
+                    <div style="position:absolute;left:-70px;top:-70px;width:140px;height:140px;border:1px solid var(--ap-accent-line);border-radius:50%;animation:apRing 3.6s linear infinite"></div>
+                    <div style="position:absolute;left:-70px;top:-70px;width:140px;height:140px;border:1px solid var(--ap-accent-line);border-radius:50%;animation:apRing 3.6s 1.8s linear infinite"></div>
+                    <div style="position:absolute;left:-63px;top:-55px;width:126px;height:110px;transform:rotateX(90deg) translateZ(58px);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:linear-gradient(160deg,var(--ap-surface2),var(--ap-bg2));box-shadow:inset 0 0 0 1px var(--ap-accent-line)"></div>
+                    <div data-fill style="position:absolute;left:-63px;top:-55px;width:126px;height:110px;transform:rotateX(90deg) translateZ(22px);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:linear-gradient(160deg,var(--ap-accent),var(--ap-accent-deep));opacity:.45;transition:transform .7s cubic-bezier(.2,.8,.2,1)"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(0deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.16),rgba(145,132,217,.03));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(60deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.13),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(120deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.1),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(180deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.16),rgba(145,132,217,.03));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(240deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.13),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(300deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.1),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-nest-items style="position:absolute;left:0;top:0;transform-style:preserve-3d">
+                      <sc-for list="{{ nestItems }}" as="it" hint-placeholder-count="4">
+                        <div data-nest-item style="position:absolute;left:-23px;top:-15px;width:46px;height:30px;border-radius:7px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent)"><sc-if value="{{ it.isImg }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></sc-if><sc-if value="{{ it.isFile }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></sc-if><sc-if value="{{ it.isTxt }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,48H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,24H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-48,40H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"></path></svg></sc-if><sc-if value="{{ it.isLink }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg></sc-if><sc-if value="{{ it.isClip }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"></path></svg></sc-if><sc-if value="{{ it.isFolder }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></sc-if></div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div ref="{{ dkDialogRef }}" style="position:absolute;inset:0;display:none;place-items:center;padding:20px;background:color-mix(in srgb,var(--ap-bg) 62%,transparent);backdrop-filter:blur(3px);z-index:20">
+                <div style="width:min(430px,100%);border-radius:16px;background:var(--ap-surface);box-shadow:var(--ap-shadow-lg);padding:18px;animation:apDialog .4s cubic-bezier(.2,.8,.2,1) both">
+                  <div style="display:flex;align-items:center;gap:11px;margin-bottom:14px">
+                    <div style="width:38px;height:38px;border-radius:10px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent)"><svg width="20" height="20" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg></div>
+                    <div style="min-width:0"><div style="font-size:15px;font-weight:500">Incoming drop</div><div ref="{{ dkDlgSubRef }}" style="font-size:11.5px;color:var(--ap-muted)">MIRA-PHONE wants to send 3 items · 8.4 MB</div></div>
+                  </div>
+                  <div style="height:104px;position:relative;perspective:800px;margin-bottom:14px">
+                    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotateX(6deg);transform-style:preserve-3d">
+                      <div style="position:absolute;left:-42px;top:-30px;width:84px;height:60px;border-radius:9px;background:var(--ap-bg2);box-shadow:var(--ap-shadow-sm);transform:translate3d(-38px,7px,-40px) rotate(-9deg)"></div>
+                      <div style="position:absolute;left:-42px;top:-30px;width:84px;height:60px;border-radius:9px;background:var(--ap-surface2);box-shadow:var(--ap-shadow-sm);transform:translate3d(20px,4px,-20px) rotate(7deg)"></div>
+                      <div style="position:absolute;left:-42px;top:-30px;width:84px;height:60px;border-radius:9px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent);animation:apBob 3.4s ease-in-out infinite"><svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></div>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:10px;background:var(--ap-bg2);margin-bottom:13px">
+                    <svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-accent);flex:0 0 auto"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path></svg>
+                    <div style="font-size:11px;color:var(--ap-muted);line-height:1.45">Same network, encrypted. Files land in ~/DropNest.</div>
+                  </div>
+                  <div style="display:flex;gap:8px;justify-content:flex-end">
+                    <button onClick="{{ declineDrop }}" class="btn btn-secondary" style="font-size:12.5px">Decline</button>
+                    <button onClick="{{ acceptDrop }}" class="btn btn-primary" style="font-size:12.5px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>Accept</button>
+                  </div>
+                </div>
+              </div>
+
+              <div ref="{{ dkQrRef }}" style="position:absolute;inset:0;display:none;place-items:center;padding:20px;background:color-mix(in srgb,var(--ap-bg) 62%,transparent);backdrop-filter:blur(3px);z-index:20">
+                <div style="width:min(380px,100%);border-radius:16px;background:var(--ap-surface);box-shadow:var(--ap-shadow-lg);padding:18px;text-align:center;animation:apDialog .4s cubic-bezier(.2,.8,.2,1) both">
+                  <div style="font-size:15px;font-weight:500;margin-bottom:4px">Pair with QR</div>
+                  <div style="font-size:11.5px;color:var(--ap-muted);margin-bottom:14px">Point the other device's camera here</div>
+                  <div style="width:168px;height:168px;margin:0 auto 14px;border-radius:12px;background:var(--ap-bg2);box-shadow:var(--ap-shadow-sm);display:grid;place-items:center;color:var(--ap-accent);position:relative;overflow:hidden">
+                    <svg width="120" height="120" viewBox="0 0 256 256" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm0,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48ZM200,40H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-64,72V144a8,8,0,0,1,16,0v32a8,8,0,0,1-16,0Zm80-16a8,8,0,0,1-8,8H184v40a8,8,0,0,1-8,8H144a8,8,0,0,1,0-16h24V144a8,8,0,0,1,16,0v8h24A8,8,0,0,1,216,160Zm0,32v16a8,8,0,0,1-16,0V192a8,8,0,0,1,16,0Z"></path></svg>
+                    <div style="position:absolute;left:0;right:0;height:2px;background:var(--ap-accent);box-shadow:0 0 12px var(--ap-accent);animation:apBob 2.2s ease-in-out infinite;top:50%"></div>
+                  </div>
+                  <button onClick="{{ closeQr }}" class="btn btn-secondary btn-block" style="font-size:12.5px;margin:0">Done</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <sc-if value="{{ showPhone }}" hint-placeholder-val="{{ true }}">
+      <div ref="{{ phoneFrameRef }}" style="flex:0 0 auto;transform-style:preserve-3d;animation:apPop .66s .08s cubic-bezier(.2,.8,.2,1) both">
+        <div style="width:404px;height:868px;border-radius:46px;padding:9px;background:linear-gradient(160deg,#2c2f44,#0c0d15 62%);box-shadow:0 0 0 1px #3a3d52,0 40px 86px -26px rgba(0,0,0,.85)">
+          <div style="width:386px;height:850px;border-radius:38px;overflow:hidden;background:var(--ap-bg);display:flex;flex-direction:column;position:relative">
+            <div style="height:34px;flex:0 0 34px;display:flex;align-items:center;justify-content:space-between;padding:0 19px;font-size:11.5px;font-weight:500;position:relative;z-index:2">
+              <span>9:41</span>
+              <div style="position:absolute;left:50%;top:8px;transform:translateX(-50%);width:80px;height:19px;border-radius:99px;background:#0a0b12"></div>
+              <div style="display:flex;align-items:center;gap:5px;opacity:.85"><svg width="13" height="13" viewBox="0 0 256 256" fill="currentColor"><path d="M140,204a12,12,0,1,1-12-12A12,12,0,0,1,140,204ZM237.08,87A172,172,0,0,0,18.92,87,8,8,0,0,0,29.08,99.37a156,156,0,0,1,197.84,0A8,8,0,0,0,237.08,87ZM205,122.77a124,124,0,0,0-153.94,0A8,8,0,0,0,61,135.31a108,108,0,0,1,134.06,0,8,8,0,0,0,11.24-1.3A8,8,0,0,0,205,122.77Zm-32.26,35.76a76.05,76.05,0,0,0-89.42,0,8,8,0,0,0,9.42,12.94,60,60,0,0,1,70.58,0,8,8,0,1,0,9.42-12.94Z"></path></svg><svg width="13" height="13" viewBox="0 0 256 256" fill="currentColor"><path d="M215.79,118.17a8,8,0,0,0-5-5.66L153.18,90.9l14.66-73.33a8,8,0,0,0-13.69-7l-112,120a8,8,0,0,0,3,13l57.63,21.61L88.16,238.43a8,8,0,0,0,13.69,7l112-120A8,8,0,0,0,215.79,118.17ZM109.37,214l10.47-52.38a8,8,0,0,0-5-9.06L62,132.71l84.62-90.66L136.16,94.43a8,8,0,0,0,5,9.06l52.8,19.8Z"></path></svg></div>
+            </div>
+
+            <div style="flex:1;min-height:0;position:relative">
+
+              <div class="scr" data-pscr="box" data-screen-label="Phone · My box" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:8px 18px 0;display:flex;align-items:flex-start;gap:10px">
+                  <div style="flex:1">
+                    <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:3px">Always yours</div>
+                    <h2 style="font-size:24px;margin:0 0 2px">My box</h2>
+                    <div ref="{{ phBoxMetaRef }}" style="font-size:11.5px;color:var(--ap-muted)">4 items · 18.2 MB</div>
+                  </div>
+                  <button onClick="{{ phSettings }}" class="btn btn-secondary btn-icon" style="width:44px;height:44px"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm109.94-52.79a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A112.1,112.1,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.62a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21Zm-15,34.91-28.57,16.25a8,8,0,0,0-3,3c-.58,1-1.19,2.06-1.81,3.06a7.94,7.94,0,0,0-1.22,4.21l-.15,32.25a95.89,95.89,0,0,1-25.37,14.3L134,199.13a8,8,0,0,0-3.91-1h-.19c-1.21,0-2.43,0-3.64,0a8.08,8.08,0,0,0-4.1,1l-28.84,16.1A96,96,0,0,1,67.88,201l-.11-32.2a8,8,0,0,0-1.22-4.22c-.62-1-1.23-2-1.8-3.06a8.09,8.09,0,0,0-3-3.06l-28.6-16.29a90.49,90.49,0,0,1,0-28.26L61.67,97.63a8,8,0,0,0,3-3c.58-1,1.19-2.06,1.81-3.06a7.94,7.94,0,0,0,1.22-4.21l.15-32.25a95.89,95.89,0,0,1,25.37-14.3L122,56.87a8,8,0,0,0,4.1,1c1.21,0,2.43,0,3.64,0a8.08,8.08,0,0,0,4.1-1l28.84-16.1A96,96,0,0,1,188.12,55l.11,32.2a8,8,0,0,0,1.22,4.22c.62,1,1.23,2,1.8,3.06a8.09,8.09,0,0,0,3,3.06l28.6,16.29A90.49,90.49,0,0,1,222.9,142.12Z"></path></svg></button>
+                </div>
+                <div data-drag="nest" style="flex:0 0 232px;position:relative;perspective:900px;perspective-origin:50% 44%;cursor:grab;touch-action:none;margin-top:2px">
+                  <div data-nest="phone" style="position:absolute;left:50%;top:52%;transform-style:preserve-3d;transform:translate(-50%,-50%) rotateX(-18deg) scale(.92)">
+                    <div style="position:absolute;left:-104px;top:-104px;width:208px;height:208px;transform:rotateX(90deg) translateZ(-62px);background:radial-gradient(circle,var(--ap-accent-soft) 0%,transparent 66%);border-radius:50%"></div>
+                    <div style="position:absolute;left:-70px;top:-70px;width:140px;height:140px;border:1px solid var(--ap-accent-line);border-radius:50%;animation:apRing 3.4s linear infinite"></div>
+                    <div style="position:absolute;left:-70px;top:-70px;width:140px;height:140px;border:1px solid var(--ap-accent-line);border-radius:50%;animation:apRing 3.4s 1.7s linear infinite"></div>
+                    <div style="position:absolute;left:-63px;top:-55px;width:126px;height:110px;transform:rotateX(90deg) translateZ(58px);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:linear-gradient(160deg,var(--ap-surface2),var(--ap-bg2));box-shadow:inset 0 0 0 1px var(--ap-accent-line)"></div>
+                    <div data-fill style="position:absolute;left:-63px;top:-55px;width:126px;height:110px;transform:rotateX(90deg) translateZ(22px);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:linear-gradient(160deg,var(--ap-accent),var(--ap-accent-deep));opacity:.5;transition:transform .7s cubic-bezier(.2,.8,.2,1)"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(0deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.16),rgba(145,132,217,.03));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(60deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.13),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(120deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.1),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(180deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.16),rgba(145,132,217,.03));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(240deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.13),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(300deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.1),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-nest-items style="position:absolute;left:0;top:0;transform-style:preserve-3d">
+                      <sc-for list="{{ nestItems }}" as="it" hint-placeholder-count="4">
+                        <div data-nest-item style="position:absolute;left:-23px;top:-15px;width:46px;height:30px;border-radius:7px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent)"><sc-if value="{{ it.isImg }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></sc-if><sc-if value="{{ it.isFile }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></sc-if><sc-if value="{{ it.isTxt }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,48H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,24H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-48,40H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"></path></svg></sc-if><sc-if value="{{ it.isLink }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg></sc-if><sc-if value="{{ it.isClip }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"></path></svg></sc-if><sc-if value="{{ it.isFolder }}"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></sc-if></div>
+                      </sc-for>
+                    </div>
+                  </div>
+                  <div style="position:absolute;left:18px;right:18px;bottom:2px;display:flex;align-items:center;gap:8px">
+                    <div style="flex:1;height:5px;border-radius:99px;background:var(--ap-soft);overflow:hidden"><div ref="{{ phGaugeRef }}" style="height:100%;width:24%;border-radius:99px;background:linear-gradient(90deg,var(--ap-accent-deep),var(--ap-accent));transition:width .7s cubic-bezier(.2,.8,.2,1)"></div></div>
+                    <div ref="{{ phGaugeTxtRef }}" style="font-size:10px;color:var(--ap-muted)">18.2 MB</div>
+                  </div>
+                </div>
+                <div onClick="{{ onQuickAdd }}" style="flex:0 0 auto;display:flex;gap:7px;padding:10px 18px 12px;overflow-x:auto">
+                  <button data-kind="file" class="btn btn-secondary" style="flex:0 0 auto;font-size:11.5px;padding:8px 11px;min-height:44px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg>Files</button>
+                  <button data-kind="img" class="btn btn-secondary" style="flex:0 0 auto;font-size:11.5px;padding:8px 11px;min-height:44px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg>Photo</button>
+                  <button data-kind="txt" class="btn btn-secondary" style="flex:0 0 auto;font-size:11.5px;padding:8px 11px;min-height:44px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,48H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,24H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-48,40H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"></path></svg>Text</button>
+                  <button data-kind="link" class="btn btn-secondary" style="flex:0 0 auto;font-size:11.5px;padding:8px 11px;min-height:44px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg>Link</button>
+                  <button data-kind="clip" class="btn btn-secondary" style="flex:0 0 auto;font-size:11.5px;padding:8px 11px;min-height:44px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"></path></svg>Clipboard</button>
+                </div>
+                <div style="flex:1;min-height:0;display:flex;flex-direction:column;background:var(--ap-bg2);border-radius:20px 20px 0 0;box-shadow:var(--ap-shadow-sm)">
+                  <div style="flex:0 0 auto;display:flex;align-items:center;gap:8px;padding:13px 18px 9px">
+                    <span style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">In your box</span>
+                    <div style="flex:1"></div>
+                    <button onClick="{{ sendAll }}" class="btn btn-ghost" style="font-size:12px;padding:9px 13px;min-height:44px">Send all</button>
+                  </div>
+                  <div onClick="{{ onListClick }}" style="flex:1;min-height:0;overflow:auto;padding:0 12px 12px">
+                    <sc-for list="{{ items }}" as="it" hint-placeholder-count="4">
+                      <div data-hit style="display:flex;align-items:center;gap:11px;padding:11px;border-radius:12px;margin-bottom:4px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm)">
+                        <div style="width:38px;height:38px;border-radius:10px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><sc-if value="{{ it.isImg }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></sc-if><sc-if value="{{ it.isFile }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></sc-if><sc-if value="{{ it.isTxt }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,48H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,24H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-48,40H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"></path></svg></sc-if><sc-if value="{{ it.isLink }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg></sc-if><sc-if value="{{ it.isClip }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"></path></svg></sc-if><sc-if value="{{ it.isFolder }}"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></sc-if></div>
+                        <div style="min-width:0;flex:1">
+                          <div style="font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ it.name }}</div>
+                          <div style="font-size:11px;color:var(--ap-muted)">{{ it.meta }}</div>
+                        </div>
+                        <button data-act="send" data-id="{{ it.id }}" class="btn btn-secondary btn-icon" style="width:44px;height:44px;flex:0 0 auto"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,117.66a8,8,0,0,1-11.32,0L136,59.31V216a8,8,0,0,1-16,0V59.31L61.66,117.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0l72,72A8,8,0,0,1,205.66,117.66Z"></path></svg></button>
+                      </div>
+                    </sc-for>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scr" data-pscr="devices" data-on="0" data-screen-label="Phone · Devices" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:8px 18px 0;display:flex;align-items:flex-start;gap:10px">
+                  <div style="flex:1">
+                    <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:3px">Nearby</div>
+                    <h2 style="font-size:24px;margin:0 0 2px">Devices</h2>
+                    <div ref="{{ phVisRef }}" style="font-size:11.5px;color:var(--ap-muted)">Visible as MIRA-PHONE</div>
+                  </div>
+                  <button onClick="{{ openQr }}" class="btn btn-secondary btn-icon" style="width:44px;height:44px"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm0,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48ZM200,40H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-64,72V144a8,8,0,0,1,16,0v32a8,8,0,0,1-16,0Zm80-16a8,8,0,0,1-8,8H184v40a8,8,0,0,1-8,8H144a8,8,0,0,1,0-16h24V144a8,8,0,0,1,16,0v8h24A8,8,0,0,1,216,160Zm0,32v16a8,8,0,0,1-16,0V192a8,8,0,0,1,16,0Z"></path></svg></button>
+                </div>
+                <div data-drag="orbit" data-r="118" style="flex:0 0 300px;position:relative;perspective:1000px;perspective-origin:50% 46%;cursor:grab;touch-action:none">
+                  <div data-orbit style="position:absolute;left:50%;top:52%;width:0;height:0;transform-style:preserve-3d;transform:rotateX(-64deg)">
+                    <div style="position:absolute;left:-118px;top:-118px;width:236px;height:236px;border:1px solid var(--ap-accent-line);border-radius:50%;opacity:.45"></div>
+                    <div style="position:absolute;left:-82px;top:-82px;width:164px;height:164px;border:1px dashed var(--ap-soft);border-radius:50%"></div>
+                    <div data-orbit-item data-peer="1" style="position:absolute;left:-56px;top:-28px;width:112px;transform-style:preserve-3d;cursor:pointer">
+                      <div style="padding:8px;border-radius:11px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:flex;align-items:center;gap:7px;border:1px solid transparent"><div style="width:26px;height:26px;border-radius:7px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M232,168h-8V72a24,24,0,0,0-24-24H56A24,24,0,0,0,32,72v96H24a8,8,0,0,0-8,8v16a24,24,0,0,0,24,24H216a24,24,0,0,0,24-24V176A8,8,0,0,0,232,168ZM48,72a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8v96H48ZM224,192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8v-8H224ZM152,88a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,88Z"></path></svg></div><div style="min-width:0"><div style="font-size:11.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">RAVI-AIR</div><div style="font-size:9.5px;color:var(--ap-muted)">macOS</div></div></div>
+                    </div>
+                    <div data-orbit-item data-peer="4" style="position:absolute;left:-56px;top:-28px;width:112px;transform-style:preserve-3d;cursor:pointer">
+                      <div style="padding:8px;border-radius:11px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:flex;align-items:center;gap:7px;border:1px solid transparent"><div style="width:26px;height:26px;border-radius:7px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h32A8,8,0,0,1,216,72Zm-8,24H176a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm40-48V208a16,16,0,0,1-16,16H152a16,16,0,0,1-16-16V192H96v16h16a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H80V192H32A24,24,0,0,1,8,168V96A24,24,0,0,1,32,72H136V48a16,16,0,0,1,16-16h80A16,16,0,0,1,248,48ZM136,176V88H32a8,8,0,0,0-8,8v72a8,8,0,0,0,8,8Zm96,32V48H152V208h80Zm-40-40a12,12,0,1,0,12,12A12,12,0,0,0,192,168Z"></path></svg></div><div style="min-width:0"><div style="font-size:11.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">STUDIO-PC</div><div style="font-size:9.5px;color:var(--ap-accent)">2 in box</div></div></div>
+                    </div>
+                    <div data-orbit-item data-peer="2" style="position:absolute;left:-56px;top:-28px;width:112px;transform-style:preserve-3d;cursor:pointer">
+                      <div style="padding:8px;border-radius:11px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:flex;align-items:center;gap:7px;border:1px solid transparent"><div style="width:26px;height:26px;border-radius:7px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div><div style="min-width:0"><div style="font-size:11.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">PIXEL-8</div><div style="font-size:9.5px;color:var(--ap-muted)">Android</div></div></div>
+                    </div>
+                    <div data-orbit-item data-peer="3" style="position:absolute;left:-56px;top:-28px;width:112px;transform-style:preserve-3d;cursor:pointer">
+                      <div style="padding:8px;border-radius:11px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:flex;align-items:center;gap:7px;border:1px solid transparent"><div style="width:26px;height:26px;border-radius:7px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm87.62,96H175.79C174,83.49,159.94,57.67,148.41,42.4A88.19,88.19,0,0,1,215.63,120ZM96.23,136h63.54c-2.31,41.61-22.23,67.11-31.77,77C118.45,203.1,98.54,177.6,96.23,136Zm0-16C98.54,78.39,118.46,52.89,128,43c9.55,9.93,29.46,35.43,31.77,77Zm11.36-77.6C96.06,57.67,82,83.49,80.21,120H40.37A88.19,88.19,0,0,1,107.59,42.4ZM40.37,136H80.21c1.82,36.51,15.85,62.33,27.38,77.6A88.19,88.19,0,0,1,40.37,136Zm108,77.6c11.53-15.27,25.56-41.09,27.38-77.6h39.84A88.19,88.19,0,0,1,148.41,213.6Z"></path></svg></div><div style="min-width:0"><div style="font-size:11.5px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">Browser</div><div style="font-size:9.5px;color:var(--ap-muted)">web</div></div></div>
+                    </div>
+                  </div>
+                  <div style="position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);pointer-events:none;text-align:center">
+                    <div style="width:80px;height:80px;border-radius:50%;border:1px solid var(--ap-accent-line);background:radial-gradient(circle,var(--ap-accent-soft),transparent 70%);display:grid;place-items:center;color:var(--ap-accent);animation:apBob 5s ease-in-out infinite"><svg width="26" height="26" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div>
+                    <div style="margin-top:6px;font-size:11px;font-weight:500">You</div>
+                  </div>
+                  <div style="position:absolute;left:18px;bottom:0;font-size:10px;color:var(--ap-muted)">Drag to spin · tap a device to open its box</div>
+                </div>
+                <div style="flex:1;min-height:0;display:flex;flex-direction:column;background:var(--ap-bg2);border-radius:20px 20px 0 0;box-shadow:var(--ap-shadow-sm)">
+                  <div style="flex:0 0 auto;padding:13px 18px 9px;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">4 nearby</div>
+                  <div onClick="{{ onPeerListClick }}" style="flex:1;min-height:0;overflow:auto;padding:0 12px 12px">
+                    <div data-hit data-peer="4" style="display:flex;align-items:center;gap:11px;padding:11px;border-radius:12px;margin-bottom:4px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);cursor:pointer"><div style="width:38px;height:38px;border-radius:10px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent)"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h32A8,8,0,0,1,216,72Zm-8,24H176a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm40-48V208a16,16,0,0,1-16,16H152a16,16,0,0,1-16-16V192H96v16h16a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H80V192H32A24,24,0,0,1,8,168V96A24,24,0,0,1,32,72H136V48a16,16,0,0,1,16-16h80A16,16,0,0,1,248,48ZM136,176V88H32a8,8,0,0,0-8,8v72a8,8,0,0,0,8,8Zm96,32V48H152V208h80Zm-40-40a12,12,0,1,0,12,12A12,12,0,0,0,192,168Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500">STUDIO-PC</div><div style="font-size:11px;color:var(--ap-accent)">2 items waiting</div></div><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-muted)"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></div>
+                    <div data-hit data-peer="1" style="display:flex;align-items:center;gap:11px;padding:11px;border-radius:12px;margin-bottom:4px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);cursor:pointer"><div style="width:38px;height:38px;border-radius:10px;background:var(--ap-soft);display:grid;place-items:center;color:var(--ap-muted)"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M232,168h-8V72a24,24,0,0,0-24-24H56A24,24,0,0,0,32,72v96H24a8,8,0,0,0-8,8v16a24,24,0,0,0,24,24H216a24,24,0,0,0,24-24V176A8,8,0,0,0,232,168ZM48,72a8,8,0,0,1,8-8H200a8,8,0,0,1,8,8v96H48ZM224,192a8,8,0,0,1-8,8H40a8,8,0,0,1-8-8v-8H224ZM152,88a8,8,0,0,1-8,8H112a8,8,0,0,1,0-16h32A8,8,0,0,1,152,88Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500">RAVI-AIR</div><div style="font-size:11px;color:var(--ap-muted)">macOS · idle</div></div><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-muted)"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></div>
+                    <div data-hit data-peer="2" style="display:flex;align-items:center;gap:11px;padding:11px;border-radius:12px;margin-bottom:4px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);cursor:pointer"><div style="width:38px;height:38px;border-radius:10px;background:var(--ap-soft);display:grid;place-items:center;color:var(--ap-muted)"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500">PIXEL-8</div><div style="font-size:11px;color:var(--ap-muted)">Android · idle</div></div><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-muted)"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></div>
+                    <div data-hit data-peer="3" style="display:flex;align-items:center;gap:11px;padding:11px;border-radius:12px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);cursor:pointer"><div style="width:38px;height:38px;border-radius:10px;background:var(--ap-soft);display:grid;place-items:center;color:var(--ap-muted)"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M128,24h0A104,104,0,1,0,232,128,104.12,104.12,0,0,0,128,24Zm87.62,96H175.79C174,83.49,159.94,57.67,148.41,42.4A88.19,88.19,0,0,1,215.63,120ZM96.23,136h63.54c-2.31,41.61-22.23,67.11-31.77,77C118.45,203.1,98.54,177.6,96.23,136Zm0-16C98.54,78.39,118.46,52.89,128,43c9.55,9.93,29.46,35.43,31.77,77Zm11.36-77.6C96.06,57.67,82,83.49,80.21,120H40.37A88.19,88.19,0,0,1,107.59,42.4ZM40.37,136H80.21c1.82,36.51,15.85,62.33,27.38,77.6A88.19,88.19,0,0,1,40.37,136Zm108,77.6c11.53-15.27,25.56-41.09,27.38-77.6h39.84A88.19,88.19,0,0,1,148.41,213.6Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500">Browser</div><div style="font-size:11px;color:var(--ap-muted)">Web receive · Pro</div></div><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-muted)"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scr" data-pscr="peer" data-on="0" data-screen-label="Phone · Peer box" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:6px 14px 0;display:flex;align-items:center;gap:9px">
+                  <button onClick="{{ phDevices }}" class="btn btn-secondary btn-icon" style="width:44px;height:44px;flex:0 0 auto"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg></button>
+                  <div style="flex:1;min-width:0"><div ref="{{ phPeerNameRef }}" style="font-size:15px;font-weight:500">STUDIO-PC</div><div style="font-size:10.5px;color:var(--ap-muted)">Their box</div></div>
+                  <button onClick="{{ saveAll }}" class="btn btn-primary" style="font-size:11.5px;min-height:44px">Save all</button>
+                </div>
+                <div style="flex:0 0 auto;padding:14px 18px 8px;display:flex;align-items:center;gap:12px">
+                  <div style="width:56px;height:56px;border-radius:15px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="28" height="28" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h32A8,8,0,0,1,216,72Zm-8,24H176a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm40-48V208a16,16,0,0,1-16,16H152a16,16,0,0,1-16-16V192H96v16h16a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H80V192H32A24,24,0,0,1,8,168V96A24,24,0,0,1,32,72H136V48a16,16,0,0,1,16-16h80A16,16,0,0,1,248,48ZM136,176V88H32a8,8,0,0,0-8,8v72a8,8,0,0,0,8,8Zm96,32V48H152V208h80Zm-40-40a12,12,0,1,0,12,12A12,12,0,0,0,192,168Z"></path></svg></div>
+                  <div style="min-width:0">
+                    <div style="font-size:12.5px;color:var(--ap-muted);line-height:1.5">Dropped for you · stays on their device until you save it.</div>
+                  </div>
+                </div>
+                <div onClick="{{ onListClick }}" style="flex:1;min-height:0;overflow:auto;padding:4px 14px 14px;display:flex;flex-direction:column;gap:9px;perspective:800px">
+                  <sc-for list="{{ peerItems }}" as="it" hint-placeholder-count="3">
+                    <div data-lift style="background:var(--ap-surface);border-radius:14px;box-shadow:var(--ap-shadow-sm);padding:12px;display:flex;gap:11px;align-items:center;transform-style:preserve-3d">
+                      <div style="width:56px;height:56px;border-radius:11px;background:linear-gradient(150deg,var(--ap-accent-soft),var(--ap-bg2));display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><sc-if value="{{ it.isImg }}"><svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></sc-if><sc-if value="{{ it.isFile }}"><svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></sc-if><sc-if value="{{ it.isTxt }}"><svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor"><path d="M32,64a8,8,0,0,1,8-8H216a8,8,0,0,1,0,16H40A8,8,0,0,1,32,64Zm8,48H168a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16Zm176,24H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Zm-48,40H40a8,8,0,0,0,0,16H168a8,8,0,0,0,0-16Z"></path></svg></sc-if><sc-if value="{{ it.isLink }}"><svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg></sc-if><sc-if value="{{ it.isClip }}"><svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor"><path d="M168,152a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,152Zm-8-40H96a8,8,0,0,0,0,16h64a8,8,0,0,0,0-16Zm56-64V216a16,16,0,0,1-16,16H56a16,16,0,0,1-16-16V48A16,16,0,0,1,56,32H92.26a47.92,47.92,0,0,1,71.48,0H200A16,16,0,0,1,216,48ZM96,64h64a32,32,0,0,0-64,0ZM200,48H173.25A47.93,47.93,0,0,1,176,64v8a8,8,0,0,1-8,8H88a8,8,0,0,1-8-8V64a47.93,47.93,0,0,1,2.75-16H56V216H200Z"></path></svg></sc-if><sc-if value="{{ it.isFolder }}"><svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></sc-if></div>
+                      <div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ it.name }}</div><div style="font-size:11px;color:var(--ap-muted)">{{ it.meta }}</div></div>
+                      <button data-act="save" data-id="{{ it.id }}" class="btn btn-secondary btn-icon" style="width:44px;height:44px;flex:0 0 auto"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg></button>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+
+              <div class="scr" data-pscr="transfers" data-on="0" data-screen-label="Phone · Transfers" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:8px 18px 0">
+                  <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:3px">Live</div>
+                  <h2 style="font-size:24px;margin:0 0 2px">Transfers</h2>
+                </div>
+                <div style="flex:1;min-height:0;overflow:auto;padding:12px 14px 14px;display:flex;flex-direction:column;gap:11px">
+                  <div ref="{{ phActiveRef }}" style="border-radius:16px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);padding:14px;position:relative;overflow:hidden">
+                    <div style="position:absolute;inset:0;background:linear-gradient(100deg,transparent,var(--ap-accent-soft),transparent);width:34%;animation:apSheen 2.6s linear infinite;pointer-events:none"></div>
+                    <div style="display:flex;align-items:center;gap:12px;position:relative">
+                      <div style="width:64px;height:64px;flex:0 0 auto;position:relative">
+                        <svg viewBox="0 0 64 64" style="width:64px;height:64px;transform:rotate(-90deg)"><circle cx="32" cy="32" r="27" fill="none" stroke="var(--ap-soft)" stroke-width="5"></circle><circle ref="{{ phRingRef }}" cx="32" cy="32" r="27" fill="none" stroke="var(--ap-accent)" stroke-width="5" stroke-linecap="round" stroke-dasharray="169.6" stroke-dashoffset="169.6" style="transition:stroke-dashoffset .3s linear"></circle></svg>
+                        <div ref="{{ phPctRef }}" style="position:absolute;inset:0;display:grid;place-items:center;font-size:13px;font-weight:500;font-variant-numeric:tabular-nums">0%</div>
+                      </div>
+                      <div style="flex:1;min-width:0">
+                        <div ref="{{ phActTitleRef }}" style="font-size:13.5px;font-weight:500">Sending to STUDIO-PC</div>
+                        <div ref="{{ phActSubRef }}" style="font-size:11px;color:var(--ap-muted);margin-top:1px">3 items · 8.4 MB</div>
+                        <div style="display:flex;gap:6px;margin-top:8px">
+                          <button onClick="{{ pauseTransfer }}" class="btn btn-secondary" style="font-size:11px;padding:6px 9px;min-height:44px">Pause</button>
+                          <button onClick="{{ cancelTransfer }}" class="btn btn-ghost" style="font-size:11px;padding:6px 9px;min-height:44px">Cancel</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div style="height:74px;margin-top:12px;border-radius:11px;background:var(--ap-bg2);position:relative;overflow:hidden;perspective:600px">
+                      <div style="position:absolute;left:12px;top:50%;transform:translateY(-50%);width:34px;height:40px;border-radius:8px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);display:grid;place-items:center;color:var(--ap-accent)"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M176,16H80A24,24,0,0,0,56,40V216a24,24,0,0,0,24,24h96a24,24,0,0,0,24-24V40A24,24,0,0,0,176,16ZM72,64H184V192H72Zm8-32h96a8,8,0,0,1,8,8v8H72V40A8,8,0,0,1,80,32Zm96,192H80a8,8,0,0,1-8-8v-8H184v8A8,8,0,0,1,176,224Z"></path></svg></div>
+                      <div style="position:absolute;right:12px;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:8px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);display:grid;place-items:center;color:var(--ap-muted)"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72a8,8,0,0,1-8,8H176a8,8,0,0,1,0-16h32A8,8,0,0,1,216,72Zm-8,24H176a8,8,0,0,0,0,16h32a8,8,0,0,0,0-16Zm40-48V208a16,16,0,0,1-16,16H152a16,16,0,0,1-16-16V192H96v16h16a8,8,0,0,1,0,16H64a8,8,0,0,1,0-16H80V192H32A24,24,0,0,1,8,168V96A24,24,0,0,1,32,72H136V48a16,16,0,0,1,16-16h80A16,16,0,0,1,248,48ZM136,176V88H32a8,8,0,0,0-8,8v72a8,8,0,0,0,8,8Zm96,32V48H152V208h80Zm-40-40a12,12,0,1,0,12,12A12,12,0,0,0,192,168Z"></path></svg></div>
+                      <div style="position:absolute;left:56px;right:60px;top:50%;height:2px;transform:translateY(-50%);background:repeating-linear-gradient(90deg,var(--ap-accent-line) 0 10px,transparent 10px 22px);background-size:32px 2px;animation:apStripe .8s linear infinite"></div>
+                      <div data-conveyor style="position:absolute;left:56px;right:60px;top:0;bottom:0;transform-style:preserve-3d">
+                        <div data-cv style="position:absolute;top:50%;left:0;width:32px;height:24px;margin-top:-12px;border-radius:6px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent)"><svg width="13" height="13" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></div>
+                        <div data-cv style="position:absolute;top:50%;left:0;width:32px;height:24px;margin-top:-12px;border-radius:6px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent)"><svg width="13" height="13" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></div>
+                        <div data-cv style="position:absolute;top:50%;left:0;width:32px;height:24px;margin-top:-12px;border-radius:6px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent)"><svg width="13" height="13" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div style="font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted);padding:4px 4px 0">Earlier</div>
+                  <div style="display:flex;flex-direction:column;gap:4px">
+                    <div data-hit style="display:flex;align-items:center;gap:11px;padding:11px;border-radius:12px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm)"><div style="width:36px;height:36px;border-radius:9px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:500">site-mock-v4.png</div><div style="font-size:10.5px;color:var(--ap-muted)">Sent to STUDIO-PC · 2 min ago</div></div><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-ok)"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg></div>
+                    <div data-hit style="display:flex;align-items:center;gap:11px;padding:11px;border-radius:12px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm)"><div style="width:36px;height:36px;border-radius:9px;background:var(--ap-accent-soft);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M165.66,90.34a8,8,0,0,1,0,11.32l-64,64a8,8,0,0,1-11.32-11.32l64-64A8,8,0,0,1,165.66,90.34ZM215.6,40.4a56,56,0,0,0-79.2,0L106.34,70.45a8,8,0,0,0,11.32,11.32l30.06-30a40,40,0,0,1,56.57,56.56l-30.07,30.06a8,8,0,0,0,11.31,11.32L215.6,119.6a56,56,0,0,0,0-79.2ZM138.34,174.22l-30.06,30.06a40,40,0,1,1-56.56-56.57l30.05-30.05a8,8,0,0,0-11.32-11.32L40.4,136.4a56,56,0,0,0,79.2,79.2l30.06-30.07a8,8,0,0,0-11.32-11.31Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:500">figma.com/file/…</div><div style="font-size:10.5px;color:var(--ap-muted)">Received from PIXEL-8 · 1 hr ago</div></div><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-ok)"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg></div>
+                    <div data-hit style="display:flex;align-items:center;gap:11px;padding:11px;border-radius:12px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm)"><div style="width:36px;height:36px;border-radius:9px;background:var(--ap-soft);display:grid;place-items:center;color:var(--ap-bad);flex:0 0 auto"><svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg></div><div style="flex:1;min-width:0"><div style="font-size:12.5px;font-weight:500">keynote-final.mov</div><div style="font-size:10.5px;color:var(--ap-muted)">Declined · yesterday</div></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="scr" data-pscr="settings" data-on="0" data-screen-label="Phone · Settings" style="position:absolute;inset:0;display:flex;flex-direction:column">
+                <div style="flex:0 0 auto;padding:8px 18px 0">
+                  <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:3px">Preferences</div>
+                  <h2 style="font-size:24px;margin:0">Settings</h2>
+                </div>
+                <div style="flex:1;min-height:0;overflow:auto;padding:12px 14px 14px;display:flex;flex-direction:column;gap:10px">
+                  <div style="background:var(--ap-surface);border-radius:14px;box-shadow:var(--ap-shadow-sm);padding:13px;display:flex;flex-direction:column;gap:11px">
+                    <div style="font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">Identity</div>
+                    <label class="field" style="display:flex;flex-direction:column;gap:5px"><span style="font-size:11px;color:var(--ap-muted)">Device name</span><input class="input" value="MIRA-PHONE" style="font-size:13px;min-height:44px"></label>
+                    <div style="display:flex;align-items:center;gap:11px">
+                      <div style="flex:1"><div style="font-size:13px;font-weight:500">Visible nearby</div><div style="font-size:10.5px;color:var(--ap-muted)">Others can send to this phone</div></div>
+                      <button onClick="{{ toggleVisible }}" data-switch="visible" style="width:48px;height:44px;border:none;background:transparent;padding:0;position:relative;cursor:pointer;flex:0 0 auto;display:grid;place-items:center"><span data-track style="width:48px;height:28px;border-radius:99px;border:1px solid var(--ap-accent-line);background:var(--ap-accent-soft);position:relative;display:block"><span data-knob style="position:absolute;top:2px;left:22px;width:22px;height:22px;border-radius:50%;background:var(--ap-accent);transition:left .24s cubic-bezier(.2,.8,.2,1)"></span></span></button>
+                    </div>
+                  </div>
+                  <div style="background:var(--ap-surface);border-radius:14px;box-shadow:var(--ap-shadow-sm);padding:13px;display:flex;flex-direction:column;gap:11px">
+                    <div style="font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">Appearance</div>
+                    <div style="font-size:13px;font-weight:500">Theme</div>
+                    <div ref="{{ themeSeg2Ref }}" class="seg" onClick="{{ onThemeSeg }}" style="align-self:stretch">
+                      <button class="seg-opt" data-theme="system" style="font-size:12px;flex:1;min-height:44px">System</button>
+                      <button class="seg-opt" data-theme="light" style="font-size:12px;flex:1;min-height:44px">Light</button>
+                      <button class="seg-opt" data-theme="dark" style="font-size:12px;flex:1;min-height:44px">Dark</button>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:11px">
+                      <div style="flex:1"><div style="font-size:13px;font-weight:500">Motion &amp; depth</div><div style="font-size:10.5px;color:var(--ap-muted)">3D nest and orbit</div></div>
+                      <button onClick="{{ toggleMotion }}" data-switch="motion" style="width:48px;height:44px;border:none;background:transparent;padding:0;position:relative;cursor:pointer;flex:0 0 auto;display:grid;place-items:center"><span data-track style="width:48px;height:28px;border-radius:99px;border:1px solid var(--ap-accent-line);background:var(--ap-accent-soft);position:relative;display:block"><span data-knob style="position:absolute;top:2px;left:22px;width:22px;height:22px;border-radius:50%;background:var(--ap-accent);transition:left .24s cubic-bezier(.2,.8,.2,1)"></span></span></button>
+                    </div>
+                  </div>
+                  <div style="background:var(--ap-surface);border-radius:14px;box-shadow:var(--ap-shadow-sm);padding:13px;display:flex;flex-direction:column;gap:11px">
+                    <div style="font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ap-muted)">Receiving</div>
+                    <div style="display:flex;align-items:center;gap:11px">
+                      <div style="flex:1"><div style="font-size:13px;font-weight:500">Ask before accepting</div><div style="font-size:10.5px;color:var(--ap-muted)">Trusted peers can skip the prompt</div></div>
+                      <button onClick="{{ toggleAsk }}" data-switch="ask" style="width:48px;height:44px;border:none;background:transparent;padding:0;position:relative;cursor:pointer;flex:0 0 auto;display:grid;place-items:center"><span data-track style="width:48px;height:28px;border-radius:99px;border:1px solid var(--ap-accent-line);background:var(--ap-accent-soft);position:relative;display:block"><span data-knob style="position:absolute;top:2px;left:22px;width:22px;height:22px;border-radius:50%;background:var(--ap-accent);transition:left .24s cubic-bezier(.2,.8,.2,1)"></span></span></button>
+                    </div>
+                    <button onClick="{{ simulateIncoming }}" class="btn btn-secondary" style="font-size:11.5px;align-self:flex-start;min-height:44px"><svg width="15" height="15" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg>Simulate incoming</button>
+                  </div>
+                  <div style="background:linear-gradient(165deg,var(--ap-accent-soft),transparent),var(--ap-surface);border:1px solid var(--ap-accent-line);border-radius:14px;padding:13px;display:flex;flex-direction:column;gap:9px">
+                    <div style="display:flex;align-items:center;gap:7px;color:var(--ap-accent)"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"></path></svg><span style="font-size:13px;font-weight:500">DropNest Pro</span></div>
+                    <div style="font-size:11.5px;color:var(--ap-muted);line-height:1.55">Folder transfers, clipboard sync, QR pairing and web receive. One payment, no account.</div>
+                    <button onClick="{{ unlockPro }}" ref="{{ phProBtnRef }}" class="btn btn-primary btn-block" style="font-size:12px;margin:0;min-height:44px">Unlock — €9 once</button>
+                  </div>
+                  <button onClick="{{ goOnboard }}" class="btn btn-secondary btn-block" style="font-size:12px;margin:0;min-height:44px">Replay first-run tour</button>
+                </div>
+              </div>
+
+              <div class="scr" data-pscr="onboard" data-on="0" data-screen-label="Phone · First run" style="position:absolute;inset:0;display:flex;flex-direction:column;background:radial-gradient(460px 400px at 50% 26%,var(--ap-accent-soft),transparent 70%),var(--ap-bg)">
+                <div data-drag="nest" style="flex:0 0 300px;position:relative;perspective:900px;perspective-origin:50% 46%;cursor:grab;touch-action:none">
+                  <div data-nest="phonb" style="position:absolute;left:50%;top:54%;transform-style:preserve-3d;transform:translate(-50%,-50%) rotateX(-17deg) scale(1.02)">
+                    <div style="position:absolute;left:-104px;top:-104px;width:208px;height:208px;transform:rotateX(90deg) translateZ(-62px);background:radial-gradient(circle,var(--ap-accent-soft) 0%,transparent 66%);border-radius:50%"></div>
+                    <div style="position:absolute;left:-70px;top:-70px;width:140px;height:140px;border:1px solid var(--ap-accent-line);border-radius:50%;animation:apRing 3.4s linear infinite"></div>
+                    <div style="position:absolute;left:-63px;top:-55px;width:126px;height:110px;transform:rotateX(90deg) translateZ(58px);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);background:linear-gradient(160deg,var(--ap-surface2),var(--ap-bg2));box-shadow:inset 0 0 0 1px var(--ap-accent-line)"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(0deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.16),rgba(145,132,217,.03));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(60deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.13),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(120deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.1),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(180deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.16),rgba(145,132,217,.03));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(240deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.13),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                    <div data-panel style="position:absolute;left:-32px;top:-58px;width:64px;height:116px;transform:rotateY(300deg) translateZ(54px);background:linear-gradient(180deg,rgba(145,132,217,.1),rgba(145,132,217,.02));border:1px solid var(--ap-accent-line);border-bottom:none"></div>
+                  </div>
+                </div>
+                <div style="flex:1;min-height:0;padding:0 22px 22px;display:flex;flex-direction:column">
+                  <div style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--ap-accent);margin-bottom:8px">Welcome to DropNest</div>
+                  <h1 style="font-size:31px;line-height:1.1;margin:0 0 10px">A box that travels with you.</h1>
+                  <p style="font-size:13.5px;color:var(--ap-muted);line-height:1.6;margin:0">Drop files, photos, text or links into your nest — even with no other device around. Hand them over in one tap when a peer shows up.</p>
+                  <div style="flex:1"></div>
+                  <label class="field" style="display:flex;flex-direction:column;gap:5px;margin-bottom:11px"><span style="font-size:11px;color:var(--ap-muted)">Name this phone</span><input class="input" value="MIRA-PHONE" style="font-size:14px;min-height:44px"></label>
+                  <div style="display:flex;align-items:center;gap:11px;padding:11px;border-radius:12px;background:var(--ap-surface);box-shadow:var(--ap-shadow-sm);margin-bottom:12px">
+                    <svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-accent);flex:0 0 auto"><path d="M247.31,124.76c-.35-.79-8.82-19.58-27.65-38.41C194.57,61.26,162.88,48,128,48S61.43,61.26,36.34,86.35C17.51,105.18,9,124,8.69,124.76a8,8,0,0,0,0,6.5c.35.79,8.82,19.57,27.65,38.4C61.43,194.74,93.12,208,128,208s66.57-13.26,91.66-38.34c18.83-18.83,27.3-37.61,27.65-38.4A8,8,0,0,0,247.31,124.76ZM128,192c-30.78,0-57.67-11.19-79.93-33.25A133.47,133.47,0,0,1,25,128,133.33,133.33,0,0,1,48.07,97.25C70.33,75.19,97.22,64,128,64s57.67,11.19,79.93,33.25A133.46,133.46,0,0,1,231.05,128C223.84,141.46,192.43,192,128,192Zm0-112a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Z"></path></svg>
+                    <div style="flex:1;font-size:12.5px">Be visible on this network</div>
+                    <button onClick="{{ toggleVisible }}" data-switch="visible" style="width:48px;height:44px;border:none;background:transparent;padding:0;position:relative;cursor:pointer;flex:0 0 auto;display:grid;place-items:center"><span data-track style="width:48px;height:28px;border-radius:99px;border:1px solid var(--ap-accent-line);background:var(--ap-accent-soft);position:relative;display:block"><span data-knob style="position:absolute;top:2px;left:22px;width:22px;height:22px;border-radius:50%;background:var(--ap-accent);transition:left .24s cubic-bezier(.2,.8,.2,1)"></span></span></button>
+                  </div>
+                  <button onClick="{{ phBox }}" class="btn btn-primary btn-block" style="font-size:14px;margin:0;min-height:48px">Open my nest<svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg></button>
+                </div>
+              </div>
+
+              <div ref="{{ phFabRef }}" style="position:absolute;right:18px;bottom:18px;z-index:12">
+                <button onClick="{{ addItem }}" style="width:58px;height:58px;border-radius:19px;border:1px solid var(--ap-accent-line);background:var(--ap-accent-soft);backdrop-filter:blur(8px);color:var(--ap-accent);display:grid;place-items:center;cursor:pointer;box-shadow:var(--ap-shadow-md);transition:transform .2s cubic-bezier(.2,.8,.2,1)" style-hover="transform:translateY(-3px) scale(1.04)" style-active="transform:scale(.95)"><svg width="24" height="24" viewBox="0 0 256 256" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"></path></svg></button>
+              </div>
+
+              <div ref="{{ phSheetWrapRef }}" style="position:absolute;inset:0;display:none;z-index:24">
+                <div onClick="{{ declineDrop }}" style="position:absolute;inset:0;background:color-mix(in srgb,var(--ap-bg) 58%,transparent);backdrop-filter:blur(3px)"></div>
+                <div style="position:absolute;left:0;right:0;bottom:0;border-radius:24px 24px 0 0;background:var(--ap-surface);box-shadow:var(--ap-shadow-lg);padding:16px 16px 22px;animation:apSheet .46s cubic-bezier(.2,.8,.2,1) both">
+                  <div style="width:38px;height:4px;border-radius:99px;background:var(--ap-line);margin:0 auto 14px"></div>
+                  <div style="display:flex;align-items:center;gap:11px;margin-bottom:13px">
+                    <div style="width:42px;height:42px;border-radius:11px;background:var(--ap-accent-soft);border:1px solid var(--ap-accent-line);display:grid;place-items:center;color:var(--ap-accent);flex:0 0 auto"><svg width="21" height="21" viewBox="0 0 256 256" fill="currentColor"><path d="M205.66,149.66l-72,72a8,8,0,0,1-11.32,0l-72-72a8,8,0,0,1,11.32-11.32L120,196.69V40a8,8,0,0,1,16,0V196.69l58.34-58.35a8,8,0,0,1,11.32,11.32Z"></path></svg></div>
+                    <div style="min-width:0"><div style="font-size:15px;font-weight:500">Incoming drop</div><div ref="{{ phDlgSubRef }}" style="font-size:11.5px;color:var(--ap-muted)">STUDIO-PC wants to send 2 items · 5.1 MB</div></div>
+                  </div>
+                  <div style="height:112px;position:relative;perspective:700px;margin-bottom:14px">
+                    <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotateX(7deg);transform-style:preserve-3d">
+                      <div style="position:absolute;left:-46px;top:-32px;width:92px;height:64px;border-radius:10px;background:var(--ap-bg2);box-shadow:var(--ap-shadow-sm);transform:translate3d(-40px,8px,-42px) rotate(-10deg)"></div>
+                      <div style="position:absolute;left:-46px;top:-32px;width:92px;height:64px;border-radius:10px;background:var(--ap-surface2);box-shadow:var(--ap-shadow-sm);transform:translate3d(22px,5px,-22px) rotate(8deg)"></div>
+                      <div style="position:absolute;left:-46px;top:-32px;width:92px;height:64px;border-radius:10px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);display:grid;place-items:center;color:var(--ap-accent);animation:apBob 3.4s ease-in-out infinite"><svg width="26" height="26" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></div>
+                    </div>
+                  </div>
+                  <div style="display:flex;align-items:center;gap:9px;padding:10px 11px;border-radius:11px;background:var(--ap-bg2);margin-bottom:13px">
+                    <svg width="17" height="17" viewBox="0 0 256 256" fill="currentColor" style="color:var(--ap-accent);flex:0 0 auto"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"></path></svg>
+                    <div style="font-size:11px;color:var(--ap-muted);line-height:1.45">Same network, end-to-end encrypted.</div>
+                  </div>
+                  <div style="display:flex;gap:8px">
+                    <button onClick="{{ declineDrop }}" class="btn btn-secondary" style="flex:1;font-size:13px;min-height:46px">Decline</button>
+                    <button onClick="{{ acceptDrop }}" class="btn btn-primary" style="flex:1.4;font-size:13px;min-height:46px"><svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>Accept</button>
+                  </div>
+                </div>
+              </div>
+
+              <div ref="{{ phQrRef }}" style="position:absolute;inset:0;display:none;place-items:center;padding:20px;background:color-mix(in srgb,var(--ap-bg) 62%,transparent);backdrop-filter:blur(3px);z-index:24">
+                <div style="width:100%;border-radius:18px;background:var(--ap-surface);box-shadow:var(--ap-shadow-lg);padding:16px;text-align:center;animation:apDialog .4s cubic-bezier(.2,.8,.2,1) both">
+                  <div style="font-size:15px;font-weight:500;margin-bottom:3px">Scan to pair</div>
+                  <div style="font-size:11.5px;color:var(--ap-muted);margin-bottom:13px">Show this to the other device</div>
+                  <div style="width:184px;height:184px;margin:0 auto 13px;border-radius:14px;background:var(--ap-bg2);box-shadow:var(--ap-shadow-sm);display:grid;place-items:center;color:var(--ap-accent);position:relative;overflow:hidden">
+                    <svg width="130" height="130" viewBox="0 0 256 256" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm0,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48ZM200,40H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-64,72V144a8,8,0,0,1,16,0v32a8,8,0,0,1-16,0Zm80-16a8,8,0,0,1-8,8H184v40a8,8,0,0,1-8,8H144a8,8,0,0,1,0-16h24V144a8,8,0,0,1,16,0v8h24A8,8,0,0,1,216,160Zm0,32v16a8,8,0,0,1-16,0V192a8,8,0,0,1,16,0Z"></path></svg>
+                    <div style="position:absolute;left:0;right:0;top:50%;height:2px;background:var(--ap-accent);box-shadow:0 0 12px var(--ap-accent);animation:apBob 2.2s ease-in-out infinite"></div>
+                  </div>
+                  <button onClick="{{ closeQr }}" class="btn btn-secondary btn-block" style="font-size:13px;margin:0;min-height:44px">Done</button>
+                </div>
+              </div>
+            </div>
+
+            <div ref="{{ phNavRef }}" style="flex:0 0 auto;padding:7px 10px 12px;background:var(--ap-bg2);box-shadow:0 -1px 0 var(--ap-soft);position:relative;z-index:14">
+              <div onClick="{{ onPhNav }}" style="display:grid;grid-template-columns:repeat(4,1fr);gap:3px">
+                <button data-nav data-pnav="box" class="btn" style="flex-direction:column;gap:3px;padding:7px 4px;border-radius:12px;font-size:10.5px;min-height:52px"><svg width="21" height="21" viewBox="0 0 256 256" fill="currentColor"><path d="M223.68,66.15,135.68,18a15.88,15.88,0,0,0-15.36,0l-88,48.17a16,16,0,0,0-8.32,14v95.64a16,16,0,0,0,8.32,14l88,48.17a15.88,15.88,0,0,0,15.36,0l88-48.17a16,16,0,0,0,8.32-14V80.18A16,16,0,0,0,223.68,66.15ZM128,32l80.34,44-29.77,16.3-80.35-44ZM128,120,47.66,76l33.9-18.56,80.34,44ZM40,90l80,43.78v85.79L40,175.82Zm176,85.78h0l-80,43.79V133.82l32-17.51V152a8,8,0,0,0,16,0V107.55L216,90v85.77Z"></path></svg>Box</button>
+                <button data-nav data-pnav="devices" class="btn" style="flex-direction:column;gap:3px;padding:7px 4px;border-radius:12px;font-size:10.5px;min-height:52px"><svg width="21" height="21" viewBox="0 0 256 256" fill="currentColor"><path d="M140,204a12,12,0,1,1-12-12A12,12,0,0,1,140,204ZM237.08,87A172,172,0,0,0,18.92,87,8,8,0,0,0,29.08,99.37a156,156,0,0,1,197.84,0A8,8,0,0,0,237.08,87ZM205,122.77a124,124,0,0,0-153.94,0A8,8,0,0,0,61,135.31a108,108,0,0,1,134.06,0,8,8,0,0,0,11.24-1.3A8,8,0,0,0,205,122.77Zm-32.26,35.76a76.05,76.05,0,0,0-89.42,0,8,8,0,0,0,9.42,12.94,60,60,0,0,1,70.58,0,8,8,0,1,0,9.42-12.94Z"></path></svg>Devices</button>
+                <button data-nav data-pnav="transfers" class="btn" style="flex-direction:column;gap:3px;padding:7px 4px;border-radius:12px;font-size:10.5px;min-height:52px;position:relative"><svg width="21" height="21" viewBox="0 0 256 256" fill="currentColor"><path d="M136,80v43.47l36.12,21.67a8,8,0,0,1-8.24,13.72l-40-24A8,8,0,0,1,120,128V80a8,8,0,0,1,16,0Zm-8-48A95.44,95.44,0,0,0,60.08,60.15C52.81,67.51,46.35,74.59,40,82V64a8,8,0,0,0-16,0v40a8,8,0,0,0,8,8H72a8,8,0,0,0,0-16H49c7.15-8.42,14.27-16.35,22.39-24.57a80,80,0,1,1,1.66,114.75,8,8,0,1,0-11,11.64A96,96,0,1,0,128,32Z"></path></svg>Transfers<span ref="{{ phBadgeRef }}" style="position:absolute;top:5px;right:calc(50% - 20px);width:7px;height:7px;border-radius:50%;background:var(--ap-accent);opacity:0"></span></button>
+                <button data-nav data-pnav="settings" class="btn" style="flex-direction:column;gap:3px;padding:7px 4px;border-radius:12px;font-size:10.5px;min-height:52px"><svg width="21" height="21" viewBox="0 0 256 256" fill="currentColor"><path d="M128,80a48,48,0,1,0,48,48A48.05,48.05,0,0,0,128,80Zm0,80a32,32,0,1,1,32-32A32,32,0,0,1,128,160Zm109.94-52.79a8,8,0,0,0-3.89-5.4l-29.83-17-.12-33.62a8,8,0,0,0-2.83-6.08,111.91,111.91,0,0,0-36.72-20.67,8,8,0,0,0-6.46.59L128,41.85,97.88,25a8,8,0,0,0-6.47-.6A112.1,112.1,0,0,0,54.73,45.15a8,8,0,0,0-2.83,6.07l-.15,33.65-29.83,17a8,8,0,0,0-3.89,5.4,106.47,106.47,0,0,0,0,41.56,8,8,0,0,0,3.89,5.4l29.83,17,.12,33.62a8,8,0,0,0,2.83,6.08,111.91,111.91,0,0,0,36.72,20.67,8,8,0,0,0,6.46-.59L128,214.15,158.12,231a7.91,7.91,0,0,0,3.9,1,8.09,8.09,0,0,0,2.57-.42,112.1,112.1,0,0,0,36.68-20.73,8,8,0,0,0,2.83-6.07l.15-33.65,29.83-17a8,8,0,0,0,3.89-5.4A106.47,106.47,0,0,0,237.94,107.21Zm-15,34.91-28.57,16.25a8,8,0,0,0-3,3c-.58,1-1.19,2.06-1.81,3.06a7.94,7.94,0,0,0-1.22,4.21l-.15,32.25a95.89,95.89,0,0,1-25.37,14.3L134,199.13a8,8,0,0,0-3.91-1h-.19c-1.21,0-2.43,0-3.64,0a8.08,8.08,0,0,0-4.1,1l-28.84,16.1A96,96,0,0,1,67.88,201l-.11-32.2a8,8,0,0,0-1.22-4.22c-.62-1-1.23-2-1.8-3.06a8.09,8.09,0,0,0-3-3.06l-28.6-16.29a90.49,90.49,0,0,1,0-28.26L61.67,97.63a8,8,0,0,0,3-3c.58-1,1.19-2.06,1.81-3.06a7.94,7.94,0,0,0,1.22-4.21l.15-32.25a95.89,95.89,0,0,1,25.37-14.3L122,56.87a8,8,0,0,0,4.1,1c1.21,0,2.43,0,3.64,0a8.08,8.08,0,0,0,4.1-1l28.84-16.1A96,96,0,0,1,188.12,55l.11,32.2a8,8,0,0,0,1.22,4.22c.62,1,1.23,2,1.8,3.06a8.09,8.09,0,0,0,3,3.06l28.6,16.29A90.49,90.49,0,0,1,222.9,142.12Z"></path></svg>Settings</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+    </div>
+  </div>
+
+  <div style="max-width:1580px;margin:10px auto 0;font-size:11.5px;color:var(--ap-muted)">
+    <span ref="{{ hintRef }}">Drag the nest or the orbit to spin them · tap a device to open its box · Run handoff demo plays a full send between the two apps.</span>
+  </div>
+
+  <div data-flight style="width:46px;height:34px;border-radius:8px;background:var(--ap-surface);box-shadow:var(--ap-shadow-lg);display:grid;place-items:center;color:var(--ap-accent)"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V158.75l-26.07-26.06a16,16,0,0,0-22.63,0l-20,20-44-44a16,16,0,0,0-22.62,0L40,149.37V56ZM40,172l52-52,80,80H40Zm176,28H194.63l-36-36,20-20L216,181.38V200ZM144,100a12,12,0,1,1,12,12A12,12,0,0,1,144,100Z"></path></svg></div>
+  <div data-flight style="width:46px;height:34px;border-radius:8px;background:var(--ap-surface);box-shadow:var(--ap-shadow-lg);display:grid;place-items:center;color:var(--ap-accent)"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Z"></path></svg></div>
+  <div data-flight style="width:46px;height:34px;border-radius:8px;background:var(--ap-surface);box-shadow:var(--ap-shadow-lg);display:grid;place-items:center;color:var(--ap-accent)"><svg width="18" height="18" viewBox="0 0 256 256" fill="currentColor"><path d="M216,72H131.31L104,44.69A15.86,15.86,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.4,15.4,0,0,0,39.38,216H216.89A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40ZM216,200H40V88H216Z"></path></svg></div>
+
+  <div ref="{{ toastRef }}" style="position:fixed;left:50%;bottom:20px;transform:translate(-50%,22px);opacity:0;pointer-events:none;padding:9px 16px;border-radius:99px;background:var(--ap-surface);box-shadow:var(--ap-shadow-md);font-size:12.5px;transition:opacity .3s,transform .3s cubic-bezier(.2,.8,.2,1);z-index:70"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1580,&quot;height&quot;:900},&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#9184d9&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#9184d9&quot;,&quot;#79a6c9&quot;,&quot;#b58fa8&quot;,&quot;#8fb59a&quot;],&quot;section&quot;:&quot;Look&quot;},&quot;motion&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Showcase&quot;,&quot;options&quot;:[&quot;Restrained&quot;,&quot;Lively&quot;,&quot;Showcase&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;tilt&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:6,&quot;min&quot;:0,&quot;max&quot;:14,&quot;step&quot;:1,&quot;unit&quot;:&quot;deg&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Look&quot;},&quot;startTheme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;default&quot;:&quot;Dark&quot;,&quot;options&quot;:[&quot;Dark&quot;,&quot;Light&quot;],&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Look&quot;}}">
+const KINDS = {
+  file: { icon: '#ic-file', names: ['brief-v2.pdf', 'invoice-0942.pdf', 'contract.pdf', 'notes.md'] },
+  img: { icon: '#ic-img', names: ['IMG_4821.HEIC', 'site-mock-v5.png', 'roof-detail.jpg', 'scan.png'] },
+  txt: { icon: '#ic-txt', names: ['Wifi password', 'Address for Friday', 'Serial number'] },
+  link: { icon: '#ic-link', names: ['figma.com/file/…', 'maps.app/…', 'github.com/dropnest'] },
+  clip: { icon: '#ic-clip', names: ['Clipboard · 2 lines', 'Clipboard · URL'] },
+  folder: { icon: '#ic-folder', names: ['Q3-assets', 'Screenshots', 'Client-handoff'] },
+};
+const PEERS = [
+  { name: 'MIRA-PHONE', icon: '#ic-phone', sub: 'Android · 3 items waiting' },
+  { name: 'RAVI-AIR', icon: '#ic-laptop', sub: 'macOS · idle' },
+  { name: 'PIXEL-8', icon: '#ic-phone', sub: 'Android · idle' },
+  { name: 'Browser', icon: '#ic-globe', sub: 'Web receive' },
+  { name: 'STUDIO-PC', icon: '#ic-desktop', sub: 'Windows · 2 items waiting' },
+];
+
+class Component extends DCLogic {
+  state = {
+    view: 'both', theme: 'dark', pScreen: 'box', dScreen: 'box',
+    items: [
+      { id: 1, name: 'site-mock-v4.png', kind: 'img', meta: '2.4 MB · 2 min ago' },
+      { id: 2, name: 'Wifi password', kind: 'txt', meta: 'Text · 14 min ago' },
+      { id: 3, name: 'Q3-assets', kind: 'folder', meta: '38 MB · 12 files · 1 hr ago' },
+      { id: 4, name: 'figma.com/file/…', kind: 'link', meta: 'Link · yesterday' },
+    ],
+    peerItems: [
+      { id: 101, name: 'roof-detail.jpg', kind: 'img', meta: '3.1 MB · from STUDIO-PC' },
+      { id: 102, name: 'Client-handoff', kind: 'folder', meta: '22 MB · 8 files' },
+      { id: 103, name: 'Address for Friday', kind: 'txt', meta: 'Text snippet' },
+    ],
+    peer: 4, visible: true, motion: true, ask: true, pro: false, dialog: false, qr: false, live: false,
+  };
+  _cbs = {}; _nid = 200; _timers = []; _spin = { nest: 0, orbit: 0 }; _vel = { nest: 0, orbit: 0 };
+
+  mk(n) { return this._cbs[n] || (this._cbs[n] = el => { this[n] = el; }); }
+
+  renderVals() {
+    const flag = i => ({
+      ...i,
+      isImg: i.kind === 'img', isFile: i.kind === 'file', isTxt: i.kind === 'txt',
+      isLink: i.kind === 'link', isClip: i.kind === 'clip', isFolder: i.kind === 'folder',
+    });
+    const items = this.state.items.map(flag);
+    return {
+      rootRef: this.mk('root'), stageRef: this.mk('stage'), stageWrapRef: this.mk('stageWrap'),
+      phoneFrameRef: this.mk('phoneFrame'), deskFrameRef: this.mk('deskFrame'),
+      viewSegRef: this.mk('viewSeg'), themeLabelRef: this.mk('themeLabel'), toastRef: this.mk('toastEl'), hintRef: this.mk('hint'),
+      deskVisRef: this.mk('deskVis'), dkCountRef: this.mk('dkCount'), dkBadgeRef: this.mk('dkBadge'),
+      dkProRef: this.mk('dkPro'), dkProBodyRef: this.mk('dkProBody'), dkProBtnRef: this.mk('dkProBtn'),
+      dkProBtn2Ref: this.mk('dkProBtn2'), phProBtnRef: this.mk('phProBtn'),
+      dkBoxMetaRef: this.mk('dkBoxMeta'), dkGaugeRef: this.mk('dkGauge'), dkGaugeTxtRef: this.mk('dkGaugeTxt'),
+      phBoxMetaRef: this.mk('phBoxMeta'), phGaugeRef: this.mk('phGauge'), phGaugeTxtRef: this.mk('phGaugeTxt'),
+      dkPeerNameRef: this.mk('dkPeerName'), phPeerNameRef: this.mk('phPeerName'), phVisRef: this.mk('phVis'),
+      dkVisBtnRef: this.mk('dkVisBtn'), themeSegRef: this.mk('themeSeg'), themeSeg2Ref: this.mk('themeSeg2'),
+      dkActiveRef: this.mk('dkActive'), dkActTitleRef: this.mk('dkActTitle'), dkActSubRef: this.mk('dkActSub'),
+      dkActPctRef: this.mk('dkActPct'), dkBarRef: this.mk('dkBar'),
+      phActiveRef: this.mk('phActive'), phActTitleRef: this.mk('phActTitle'), phActSubRef: this.mk('phActSub'),
+      phPctRef: this.mk('phPct'), phRingRef: this.mk('phRing'), phBadgeRef: this.mk('phBadge'),
+      dkDialogRef: this.mk('dkDialog'), dkDlgSubRef: this.mk('dkDlgSub'), phSheetWrapRef: this.mk('phSheetWrap'),
+      phDlgSubRef: this.mk('phDlgSub'), dkQrRef: this.mk('dkQr'), phQrRef: this.mk('phQr'),
+      phNavRef: this.mk('phNav'), phFabRef: this.mk('phFab'),
+      items, nestItems: items.slice(0, 7),
+      peerItems: this.state.peerItems.map(flag),
+      showPhone: this.state.view !== 'desktop', showDesktop: this.state.view !== 'phone',
+      viewBoth: () => this.setState({ view: 'both' }),
+      viewPhone: () => this.setState({ view: 'phone' }),
+      viewDesk: () => this.setState({ view: 'desktop' }),
+      toggleTheme: () => this.applyTheme(this.state.theme === 'dark' ? 'light' : 'dark'),
+      onThemeSeg: e => { const b = e.target.closest('[data-theme]'); if (b) this.applyTheme(b.dataset.theme === 'light' ? 'light' : 'dark'); },
+      goOnboard: () => this.setState({ pScreen: 'onboard', dScreen: 'onboard' }),
+      dkBox: () => this.setState({ dScreen: 'box' }), dkDevices: () => this.setState({ dScreen: 'devices' }),
+      dkTransfers: () => this.setState({ dScreen: 'transfers' }), dkSettings: () => this.setState({ dScreen: 'settings' }),
+      phBox: () => this.setState({ pScreen: 'box' }), phDevices: () => this.setState({ pScreen: 'devices' }),
+      phSettings: () => this.setState({ pScreen: 'settings' }),
+      onPhNav: e => { const b = e.target.closest('[data-pnav]'); if (b) this.setState({ pScreen: b.dataset.pnav }); },
+      onQuickAdd: e => { const b = e.target.closest('[data-kind]'); if (b) this.addOf(b.dataset.kind); },
+      addItem: () => this.addOf(['img', 'file', 'txt', 'link', 'folder'][Math.floor(Math.random() * 5)]),
+      onListClick: e => {
+        const b = e.target.closest('[data-act]'); if (!b) return;
+        const id = Number(b.dataset.id);
+        if (b.dataset.act === 'del') { this.setState(s => ({ items: s.items.filter(i => i.id !== id) })); this.toast('Removed from your box'); }
+        else if (b.dataset.act === 'send') this.startTransfer('send', 1);
+        else if (b.dataset.act === 'save') {
+          const it = this.state.peerItems.find(i => i.id === id); if (!it) return;
+          this.setState(s => ({ items: [{ ...it, id: ++this._nid, meta: it.meta.split('·')[0].trim() + ' · just now' }, ...s.items], peerItems: s.peerItems.filter(i => i.id !== id) }));
+          this.toast('Saved to your box');
+        }
+      },
+      onPeerListClick: e => { const b = e.target.closest('[data-peer]'); if (b) this.openPeer(Number(b.dataset.peer)); },
+      saveAll: () => {
+        const add = this.state.peerItems.map(it => ({ ...it, id: ++this._nid, meta: it.meta.split('·')[0].trim() + ' · just now' }));
+        if (!add.length) return this.toast('Nothing left to save');
+        this.setState(s => ({ items: [...add, ...s.items], peerItems: [] }));
+        this.toast(add.length + ' items saved to your box');
+      },
+      sendAll: () => this.startTransfer('send', this.state.items.length),
+      toggleVisible: () => this.setState(s => ({ visible: !s.visible })),
+      toggleMotion: () => this.setState(s => ({ motion: !s.motion })),
+      toggleAsk: () => this.setState(s => ({ ask: !s.ask })),
+      unlockPro: () => { this.setState({ pro: true }); this.toast('Pro unlocked — folders, clipboard sync, QR and web receive'); },
+      openQr: () => this.setState({ qr: true }), closeQr: () => this.setState({ qr: false }),
+      simulateIncoming: () => this.setState({ dialog: true }),
+      acceptDrop: () => { this.setState({ dialog: false }); this.startTransfer('recv', 2); },
+      declineDrop: () => { this.setState({ dialog: false }); this.toast('Declined'); },
+      pauseTransfer: () => { this._paused = !this._paused; this.toast(this._paused ? 'Paused' : 'Resumed'); },
+      cancelTransfer: () => { this._paused = false; this._pct = 0; this.setState({ live: false }); this.toast('Transfer cancelled'); },
+      runDemo: () => this.demo(),
+    };
+  }
+
+  componentDidMount() {
+    this._fit = () => this.fit(); window.addEventListener('resize', this._fit);
+    this.root.addEventListener('pointerdown', this.onDown = e => this.down(e));
+    this.applyProps(); this.sync(); this.cache(); this.fit(); this.loop();
+  }
+  componentDidUpdate() { this.applyProps(); this.sync(); this.cache(); this.fit(); }
+  componentWillUnmount() {
+    window.removeEventListener('resize', this._fit);
+    cancelAnimationFrame(this._raf); this._timers.forEach(clearTimeout);
+  }
+
+  applyProps() {
+    const p = this.props || {}, r = this.root; if (!r) return;
+    const acc = p.accent && p.accent !== '#9184d9' ? p.accent : (this.state.theme === 'light' ? '#6d61b4' : '#9184d9');
+    r.style.setProperty('--ap-accent', acc); r.style.setProperty('--color-accent', acc);
+    if (!this._themed && p.startTheme === 'Light') { this._themed = 1; this.applyTheme('light'); }
+    const t = p.tilt == null ? 6 : p.tilt;
+    if (this.deskFrame) this.deskFrame.style.transform = 'rotateY(' + t + 'deg) rotateX(1deg) translateZ(-40px)';
+    if (this.phoneFrame) this.phoneFrame.style.transform = 'rotateY(' + -t + 'deg) rotateX(1deg) translateZ(80px)';
+    this.mirror();
+  }
+
+  mirror() {
+    const r = this.root; if (!r) return;
+    const de = document.documentElement;
+    (this._mirrored || []).forEach(k => de.style.removeProperty(k));
+    const keys = [];
+    for (let i = 0; i < r.style.length; i++) {
+      const k = r.style[i];
+      if (k.slice(0, 2) === '--') { de.style.setProperty(k, r.style.getPropertyValue(k)); keys.push(k); }
+    }
+    this._mirrored = keys;
+  }
+
+  applyTheme(t) {
+    this.setState({ theme: t });
+    const L = {
+      '--color-bg': '#eceefb', '--color-surface': '#f8f9ff', '--color-text': '#292b31', '--color-divider': 'rgba(41,43,49,.16)',
+      '--ap-bg': '#eceefb', '--ap-bg2': '#e4e7f5', '--ap-surface': '#f8f9ff', '--ap-surface2': '#eef0fb',
+      '--ap-text': '#292b31', '--ap-muted': '#595d6c', '--ap-line': '#cfd3e5', '--ap-soft': 'rgba(41,43,49,.07)',
+      '--ap-accent-soft': 'rgba(109,97,180,.12)', '--ap-accent-line': 'rgba(109,97,180,.3)', '--ap-accent-deep': '#b5abfc',
+      '--ap-ok': '#4f7a5c', '--ap-bad': '#a24d62',
+      '--ap-shadow-sm': '0 0 0 1px #cfd3e5', '--ap-shadow-md': '0 0 0 1px #d8dcec,0 8px 22px rgba(41,43,49,.1)',
+      '--ap-shadow-lg': '0 0 0 1px #cfd3e5,0 22px 56px rgba(41,43,49,.16)',
+    };
+    const r = this.root; if (!r) return;
+    const p = (this.props && this.props.accent) || '#9184d9';
+    const acc = p !== '#9184d9' ? p : (t === 'light' ? '#6d61b4' : '#9184d9');
+    if (t === 'light') Object.keys(L).forEach(k => r.style.setProperty(k, L[k]));
+    else Object.keys(L).forEach(k => r.style.removeProperty(k));
+    r.style.setProperty('--ap-accent', acc); r.style.setProperty('--color-accent', acc);
+    this.mirror();
+    if (this.themeLabel) this.themeLabel.textContent = t === 'dark' ? 'Light' : 'Dark';
+  }
+
+  fit() {
+    if (!this.stage || !this.stageWrap) return;
+    const kids = Array.from(this.stage.children);
+    const inner = kids.reduce((a, k) => a + k.offsetWidth, 0) + Math.max(0, kids.length - 1) * 44;
+    this.stage.style.width = inner + 'px';
+    const w = this.stageWrap.clientWidth;
+    const s = Math.min(1, w / Math.max(1, inner));
+    this.stage.style.transform = 'scale(' + s.toFixed(4) + ')';
+    this.stage.style.marginLeft = ((w - inner) / 2) + 'px';
+    this.stageWrap.style.height = (this.stage.offsetHeight * s) + 'px';
+    this.stageWrap.style.overflow = 'hidden';
+  }
+
+  q(sel) { return this.root ? Array.from(this.root.querySelectorAll(sel)) : []; }
+
+  sync() {
+    const s = this.state; if (!this.root) return;
+    this.q('[data-pscr]').forEach(el => el.dataset.on = el.dataset.pscr === s.pScreen ? '1' : '0');
+    this.q('[data-dscr]').forEach(el => el.dataset.on = el.dataset.dscr === s.dScreen ? '1' : '0');
+    this.q('[data-pnav]').forEach(el => el.dataset.active = el.dataset.pnav === s.pScreen ? '1' : '0');
+    this.q('[data-dnav]').forEach(el => el.dataset.active = el.dataset.dnav === s.dScreen ? '1' : '0');
+    this.q('[data-view]').forEach(el => el.dataset.active = el.dataset.view === s.view ? '1' : '0');
+    [this.themeSeg, this.themeSeg2].forEach(seg => {
+      if (!seg) return;
+      Array.from(seg.querySelectorAll('[data-theme]')).forEach(b => {
+        const on = b.dataset.theme === s.theme;
+        b.style.background = on ? 'var(--ap-accent-soft)' : 'transparent';
+        b.style.color = on ? 'var(--ap-accent)' : 'var(--ap-text)';
+      });
+    });
+    this.q('[data-switch]').forEach(b => {
+      const on = s[b.dataset.switch] !== false, k = b.querySelector('[data-knob]');
+      const track = b.querySelector('[data-track]') || b;
+      track.style.background = on ? 'var(--ap-accent-soft)' : 'var(--ap-soft)';
+      track.style.borderColor = on ? 'var(--ap-accent-line)' : 'var(--ap-line)';
+      if (k) {
+        const tw = track.offsetWidth || 44, kw = k.offsetWidth || 20;
+        k.style.left = on ? Math.max(2, tw - kw - 2) + 'px' : '2px';
+        k.style.background = on ? 'var(--ap-accent)' : 'var(--ap-muted)';
+      }
+    });
+    const n = s.items.length, mb = (n * 4.6 + 0.4).toFixed(1);
+    const meta = n + (n === 1 ? ' item · ' : ' items · ') + mb + ' MB';
+    if (this.dkBoxMeta) this.dkBoxMeta.textContent = meta + ' · stays on this device';
+    if (this.phBoxMeta) this.phBoxMeta.textContent = meta;
+    if (this.dkCount) this.dkCount.textContent = String(n);
+    const pctFull = Math.min(100, n * 12);
+    if (this.dkGauge) this.dkGauge.style.width = pctFull + '%';
+    if (this.phGauge) this.phGauge.style.width = pctFull + '%';
+    if (this.dkGaugeTxt) this.dkGaugeTxt.textContent = mb + ' MB / 2 GB';
+    if (this.phGaugeTxt) this.phGaugeTxt.textContent = mb + ' MB';
+    this.q('[data-fill]').forEach(f => {
+      const lift = 58 - Math.min(0.84, n / 8.5) * 100;
+      f.style.transform = 'rotateX(90deg) translateZ(' + lift.toFixed(1) + 'px)';
+    });
+    this.layoutNest();
+    const pn = PEERS[s.peer] || PEERS[0];
+    if (this.dkPeerName) this.dkPeerName.textContent = s.peer === 4 ? 'MIRA-PHONE' : pn.name;
+    if (this.phPeerName) this.phPeerName.textContent = pn.name;
+    if (this.deskVis) { this.deskVis.textContent = s.visible ? 'Visible · 192.168.1.20' : 'Hidden · not discoverable'; this.deskVis.style.color = s.visible ? 'var(--ap-accent)' : 'var(--ap-muted)'; }
+    if (this.phVis) this.phVis.textContent = s.visible ? 'Visible as MIRA-PHONE' : 'Hidden — nobody can see you';
+    if (this.dkVisBtn) this.dkVisBtn.lastChild.textContent = s.visible ? 'Visible' : 'Hidden';
+    if (this.dkPro) this.dkPro.style.display = s.pro ? 'none' : 'block';
+    [this.dkProBtn2, this.phProBtn].forEach(b => { if (b) { b.textContent = s.pro ? 'Pro unlocked ✓' : 'Unlock — €9 once'; b.disabled = s.pro; } });
+    if (this.dkDialog) this.dkDialog.style.display = s.dialog ? 'grid' : 'none';
+    if (this.phSheetWrap) this.phSheetWrap.style.display = s.dialog ? 'block' : 'none';
+    if (this.dkQr) this.dkQr.style.display = s.qr ? 'grid' : 'none';
+    if (this.phQr) this.phQr.style.display = s.qr ? 'grid' : 'none';
+    if (this.dkBadge) this.dkBadge.style.opacity = s.live ? '1' : '0';
+    if (this.phBadge) this.phBadge.style.opacity = s.live ? '1' : '0';
+    [this.dkActive, this.phActive].forEach(el => { if (el) el.style.opacity = s.live ? '1' : '.55'; });
+    if (this.phNav) this.phNav.style.display = s.pScreen === 'onboard' ? 'none' : 'block';
+    if (this.phFab) this.phFab.style.display = s.pScreen === 'box' ? 'block' : 'none';
+  }
+
+  layoutNest() {
+    this.q('[data-nest-items]').forEach(wrap => {
+      const kids = Array.from(wrap.children), n = kids.length;
+      kids.forEach((el, i) => {
+        const a = (i / Math.max(1, n)) * Math.PI * 2 + i * 0.6;
+        const r = 20 + (i % 3) * 9, y = 26 - i * 13 - (i % 2) * 5;
+        el.style.transform = 'translate3d(' + (Math.cos(a) * r).toFixed(1) + 'px,' + y.toFixed(1) + 'px,' + (Math.sin(a) * r).toFixed(1) + 'px) rotateY(' + (-a * 57.3).toFixed(1) + 'deg) rotateX(-6deg)';
+        el.style.animation = 'apRise .5s ' + (i * 0.05).toFixed(2) + 's cubic-bezier(.2,.8,.2,1) both';
+      });
+    });
+  }
+
+  cache() {
+    if (!this.root) return;
+    this._nests = this.q('[data-nest]').map(el => ({
+      el, base: el.dataset.nest === 'onb' ? ' scale(1.28)' : el.dataset.nest === 'phone' ? ' scale(.92)' : el.dataset.nest === 'phonb' ? ' scale(1.02)' : '',
+    }));
+    this._orbits = this.q('[data-orbit]').map(ring => {
+      const host = ring.closest('[data-drag]');
+      return {
+        R: Number((host && host.dataset.r) || 120),
+        tilt: ring.style.transform.indexOf('-64') > -1 ? 64 : 66,
+        items: Array.from(ring.querySelectorAll('[data-orbit-item]')),
+      };
+    });
+    this._convs = this.q('[data-conveyor]').map(cw => ({ w: cw.clientWidth || 200, items: Array.from(cw.children) }));
+    this._nests.forEach(n => { n.el.style.willChange = 'transform'; });
+    this._orbits.forEach(o => o.items.forEach(el => { el.style.willChange = 'transform,opacity'; }));
+  }
+
+  loop() {
+    const step = () => {
+      const lvl = (this.props && this.props.motion) || 'Showcase';
+      const k = lvl === 'Restrained' ? 0.4 : lvl === 'Lively' ? 0.75 : 1;
+      if (this.state.motion) {
+        if (!this._drag || this._drag.kind !== 'nest') this._spin.nest += (0.16 + this._vel.nest) * k;
+        if (!this._drag || this._drag.kind !== 'orbit') this._spin.orbit += (0.22 + this._vel.orbit) * k;
+      }
+      this._vel.nest *= 0.94; this._vel.orbit *= 0.94;
+      const ns = this._spin.nest.toFixed(2);
+      (this._nests || []).forEach(n => { n.el.style.transform = 'translate(-50%,-50%) rotateX(-18deg) rotateY(' + ns + 'deg)' + n.base; });
+      (this._orbits || []).forEach(o => {
+        const n = o.items.length;
+        o.items.forEach((el, i) => {
+          const a = (i / n) * 360 + this._spin.orbit;
+          el.style.transform = 'rotateY(' + a.toFixed(2) + 'deg) translateZ(' + o.R + 'px) rotateY(' + (-a).toFixed(2) + 'deg) rotateX(' + o.tilt + 'deg)';
+          const z = Math.cos(a * Math.PI / 180);
+          el.style.zIndex = String(Math.round(100 + z * 50));
+          el.style.opacity = (0.72 + 0.28 * (z + 1) / 2).toFixed(2);
+        });
+      });
+      this._conv = (this._conv + 0.012) % 1;
+      (this.state.live ? (this._convs || []) : []).forEach(c => {
+        c.items.forEach((el, i) => {
+          const t = (this._conv + i * 0.33) % 1;
+          el.style.transform = 'translate3d(' + (t * (c.w - 38)).toFixed(1) + 'px,' + (Math.sin(t * 6.28) * 7).toFixed(1) + 'px,' + (Math.cos(t * 6.28) * 22).toFixed(1) + 'px) rotateY(' + (t * 300).toFixed(0) + 'deg)';
+          el.style.opacity = t > 0.94 ? '0' : '1';
+        });
+      });
+      this._raf = requestAnimationFrame(step);
+    };
+    this._conv = 0.01; step();
+  }
+
+  down(e) {
+    const host = e.target.closest('[data-drag]');
+    const orbitItem = e.target.closest('[data-orbit-item]');
+    if (orbitItem) this._maybePeer = Number(orbitItem.dataset.peer);
+    if (!host) return;
+    this._drag = { kind: host.dataset.drag, x: e.clientX, moved: 0 };
+    host.style.cursor = 'grabbing';
+    const move = ev => {
+      if (!this._drag) return;
+      const dx = ev.clientX - this._drag.x; this._drag.x = ev.clientX; this._drag.moved += Math.abs(dx);
+      this._spin[this._drag.kind] += dx * 0.5; this._vel[this._drag.kind] = dx * 0.06;
+    };
+    const up = () => {
+      host.style.cursor = 'grab';
+      if (this._drag && this._drag.moved < 5 && this._maybePeer != null) this.openPeer(this._maybePeer);
+      this._maybePeer = null; this._drag = null;
+      window.removeEventListener('pointermove', move); window.removeEventListener('pointerup', up);
+    };
+    window.addEventListener('pointermove', move); window.addEventListener('pointerup', up);
+  }
+
+  openPeer(i) {
+    const p = PEERS[i] || PEERS[0];
+    this.setState({ peer: i, pScreen: 'peer', dScreen: 'peer' });
+    this.toast('Opened ' + p.name + "'s box");
+  }
+
+  addOf(kind) {
+    const k = KINDS[kind] || KINDS.file;
+    if ((kind === 'folder' || kind === 'clip') && !this.state.pro) { this.setState({ dScreen: 'settings', pScreen: 'settings' }); return this.toast('Folders and clipboard sync are Pro'); }
+    const name = k.names[Math.floor(Math.random() * k.names.length)];
+    this.setState(s => ({ items: [{ id: ++this._nid, name, kind, meta: (kind === 'txt' || kind === 'link' ? 'Text' : (2 + Math.random() * 9).toFixed(1) + ' MB') + ' · just now' }, ...s.items] }));
+    this.toast('Added to your nest');
+  }
+
+  toast(msg) {
+    const node = this.toastEl;
+    if (!node) return;
+    node.textContent = msg;
+    node.style.opacity = '1'; node.style.transform = 'translate(-50%,0)';
+    clearTimeout(this._tt);
+    this._tt = setTimeout(() => { node.style.opacity = '0'; node.style.transform = 'translate(-50%,22px)'; }, 2200);
+  }
+
+  startTransfer(dir, count) {
+    this.setState({ live: true, pScreen: 'transfers', dScreen: 'transfers' });
+    const size = (count * 2.8 + 0.6).toFixed(1);
+    const sendT = dir === 'send' ? 'Sending to STUDIO-PC' : 'Receiving from STUDIO-PC';
+    if (this.phActTitle) this.phActTitle.textContent = dir === 'send' ? 'Sending to STUDIO-PC' : 'Receiving from STUDIO-PC';
+    if (this.dkActTitle) this.dkActTitle.textContent = dir === 'send' ? 'Receiving from MIRA-PHONE' : 'Sending to MIRA-PHONE';
+    const sub = count + (count === 1 ? ' item · ' : ' items · ') + size + ' MB';
+    if (this.phActSub) this.phActSub.textContent = sub + ' · 12.1 MB/s';
+    if (this.dkActSub) this.dkActSub.textContent = sub + ' · 12.1 MB/s';
+    this.fly(dir);
+    this._pct = 0; clearInterval(this._pi);
+    this._pi = setInterval(() => {
+      if (this._paused) return;
+      this._pct = Math.min(100, this._pct + 2.2 + Math.random() * 3);
+      const p = Math.round(this._pct);
+      if (this.dkActPct) this.dkActPct.textContent = p + '%';
+      if (this.dkBar) this.dkBar.style.width = p + '%';
+      if (this.phPct) this.phPct.textContent = p + '%';
+      if (this.phRing) this.phRing.style.strokeDashoffset = String(169.6 * (1 - p / 100));
+      if (this._pct >= 100) {
+        clearInterval(this._pi);
+        this.toast('Transfer complete');
+        this._timers.push(setTimeout(() => this.setState({ live: false }), 1400));
+      }
+    }, 90);
+  }
+
+  fly(dir) {
+    const cards = this.q('[data-flight]');
+    const a = this.phoneFrame && this.phoneFrame.getBoundingClientRect();
+    const b = this.deskFrame && this.deskFrame.getBoundingClientRect();
+    if (!a || !b || !cards.length) return;
+    const from = dir === 'send' ? a : b, to = dir === 'send' ? b : a;
+    cards.forEach((c, i) => {
+      const x0 = from.left + from.width / 2 - 23, y0 = from.top + from.height * 0.45;
+      const x1 = to.left + to.width / 2 - 23, y1 = to.top + to.height * 0.45;
+      const mx = (x0 + x1) / 2, my = Math.min(y0, y1) - 130 - i * 26;
+      c.animate([
+        { transform: 'translate3d(' + x0 + 'px,' + y0 + 'px,0) scale(.6) rotateY(0deg)', opacity: 0 },
+        { transform: 'translate3d(' + mx + 'px,' + my + 'px,0) scale(1.18) rotateY(180deg)', opacity: 1, offset: 0.52 },
+        { transform: 'translate3d(' + x1 + 'px,' + y1 + 'px,0) scale(.6) rotateY(360deg)', opacity: 0 },
+      ], { duration: 1500, delay: i * 190, easing: 'cubic-bezier(.4,0,.5,1)' });
+    });
+  }
+
+  demo() {
+    this._timers.forEach(clearTimeout); this._timers = [];
+    this.setState({ view: 'both', pScreen: 'box', dScreen: 'box' });
+    this.toast('MIRA-PHONE is handing 3 items to STUDIO-PC');
+    const T = (ms, fn) => this._timers.push(setTimeout(fn, ms));
+    T(900, () => { this.setState({ pScreen: 'devices' }); this.toast('Picking STUDIO-PC from the orbit'); });
+    T(2100, () => this.setState({ pScreen: 'transfers', dialog: true }));
+    T(3300, () => { this.setState({ dialog: false }); this.startTransfer('send', 3); });
+  }
+}
+</script>
+</body>
+</html>

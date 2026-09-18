@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>DropNest — your box, on every device</title>
+  <meta name="description" content="Drop files, photos, text and links into DropNest. Your other devices on the same Wi-Fi pick them up in one tap. No cloud, no accounts. Android and Windows.">
+  <meta name="theme-color" content="#161826">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/logo-192.png">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="DropNest — your box, on every device">
+  <meta property="og:description" content="Drop anything on one device, pick it up on another. Local Wi-Fi only, encrypted, no accounts. Free for Android and Windows.">
+  <meta property="og:image" content="assets/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply the saved theme before first paint (dark is the default, like the app).
+    try { var t = localStorage.getItem("dn-theme"); if (t === "light") document.documentElement.dataset.theme = "light"; } catch (e) {}
+  </script>
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="i-cube" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M128 24 32 76v104l96 52 96-52V76zM32 76l96 52 96-52M128 128v104"/></symbol>
+      <symbol id="i-wifi" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" d="M24 98a160 160 0 0 1 208 0M60 134a108 108 0 0 1 136 0M96 170a56 56 0 0 1 64 0"/><circle cx="128" cy="204" r="12" fill="currentColor"/></symbol>
+      <symbol id="i-down" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M128 40v144M56 136l72 72 72-72"/></symbol>
+      <symbol id="i-shield" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M40 56v56c0 72 60 108 88 120 28-12 88-48 88-120V56L128 32zM92 128l24 24 48-48"/></symbol>
+      <symbol id="i-share" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M176 32h48v48M224 32l-88 88M136 56H56a8 8 0 0 0-8 8v136a8 8 0 0 0 8 8h136a8 8 0 0 0 8-8v-80"/></symbol>
+      <symbol id="i-bolt" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M144 16 32 144h88l-8 96 112-128h-88z"/></symbol>
+      <symbol id="i-hand" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M56 128V40a16 16 0 0 1 32 0v64M88 104V24a16 16 0 0 1 32 0v72M120 96V40a16 16 0 0 1 32 0v72M152 112V64a16 16 0 0 1 32 0v88a72 72 0 0 1-144 0v-24a16 16 0 0 1 32 0"/></symbol>
+      <symbol id="i-image" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M216 40H40a8 8 0 0 0-8 8v160a8 8 0 0 0 8 8h176a8 8 0 0 0 8-8V48a8 8 0 0 0-8-8zM32 168l56-56 64 64M144 144l32-32 48 48"/><circle cx="164" cy="84" r="12" fill="currentColor"/></symbol>
+      <symbol id="i-file" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="M200 224H56a8 8 0 0 1-8-8V40a8 8 0 0 1 8-8h96l56 56v128a8 8 0 0 1-8 8zM152 32v56h56"/></symbol>
+      <symbol id="i-link" viewBox="0 0 256 256"><path fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" d="m133 90 33-33a45 45 0 0 1 64 64l-33 33M123 166l-33 33a45 45 0 0 1-64-64l33-33M96 160l64-64"/></symbol>
+      <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path stroke="currentColor" stroke-width="1.8" stroke-linecap="round" d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+      <symbol id="i-moon" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><path fill="#34a853" d="M3.6 2.4 13 12l-9.4 9.6a1.5 1.5 0 0 1-.6-1.2V3.6c0-.5.2-.9.6-1.2z"/><path fill="#4285f4" d="M13 12l3.4-3.4 3.9 2.2c1 .6 1 1.8 0 2.4l-3.9 2.2z"/><path fill="#fbbc04" d="m3.6 2.4 12.8 6.2L13 12z"/><path fill="#ea4335" d="M13 12l3.4 3.4-12.8 6.2z"/></symbol>
+      <symbol id="i-win" viewBox="0 0 24 24"><path fill="currentColor" d="M3 4.9 11 3.8v8H3zM12.5 3.6 21 2.4v9.4h-8.5zM3 12.8h8v8L3 19.7zM12.5 12.8H21v9.6l-8.5-1.2z"/></symbol>
+      <symbol id="i-android" viewBox="0 0 24 24"><path fill="currentColor" d="M17.6 9.5 19.3 6.6a.4.4 0 0 0-.7-.4l-1.7 3a10 10 0 0 0-9.8 0l-1.7-3a.4.4 0 0 0-.7.4l1.7 2.9A9.6 9.6 0 0 0 2 17.5h20a9.6 9.6 0 0 0-4.4-8zM7.5 14.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm9 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/></symbol>
+    </defs>
+  </svg>
+
+  <header class="nav">
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="assets/logo-192.png" alt=""> DropNest</a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#screens">Screens</a>
+        <a href="#demo">Try it</a>
+        <a href="#download">Download</a>
+        <a href="privacy">Privacy</a>
+      </nav>
+      <button class="theme-btn" id="theme" type="button" aria-label="Switch theme"><svg width="18" height="18"><use href="#i-sun"/></svg></button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="hero-copy">
+          <span class="kicker rise">Free for Android and Windows</span>
+          <h1 class="rise d1">A box that <span>travels</span> with you.</h1>
+          <p class="lede rise d2">Drop files, photos, text and links into DropNest on one device. Any other device you own on the same Wi-Fi opens your box and picks up what it wants — in one tap. No cloud, no accounts, no cables.</p>
+          <div class="badges rise d3">
+            <a class="store-badge" id="badge-play" href="#download"><svg><use href="#i-play"/></svg><span class="l"><small>Get it on</small><b>Google Play</b></span></a>
+            <a class="store-badge" id="badge-ms" href="#download"><svg style="color:#0a84ff"><use href="#i-win"/></svg><span class="l"><small>Get it from</small><b>Microsoft Store</b></span></a>
+          </div>
+          <div class="fine rise d3"><span>Works on your hotspot, no internet needed</span><span>Encrypted device-to-device</span><span>Nothing leaves your network</span></div>
+        </div>
+        <div class="nest-stage" aria-hidden="true">
+          <div class="nest">
+            <div class="ring"></div><div class="ring r2"></div>
+            <div class="fill"></div>
+            <div class="floor"></div>
+            <div class="panel" style="transform:rotateZ(0deg) translateY(-103px) rotateX(-90deg)"></div>
+            <div class="panel" style="transform:rotateZ(60deg) translateY(-103px) rotateX(-90deg)"></div>
+            <div class="panel" style="transform:rotateZ(120deg) translateY(-103px) rotateX(-90deg)"></div>
+            <div class="panel" style="transform:rotateZ(180deg) translateY(-103px) rotateX(-90deg)"></div>
+            <div class="panel" style="transform:rotateZ(240deg) translateY(-103px) rotateX(-90deg)"></div>
+            <div class="panel" style="transform:rotateZ(300deg) translateY(-103px) rotateX(-90deg)"></div>
+            <div class="chip" style="transform:rotateZ(20deg) translate(26px,0) translateZ(40px) rotateX(-90deg)"><svg><use href="#i-image"/></svg></div>
+            <div class="chip" style="transform:rotateZ(150deg) translate(30px,0) translateZ(70px) rotateX(-90deg);animation-delay:-1.6s"><svg><use href="#i-file"/></svg></div>
+            <div class="chip" style="transform:rotateZ(270deg) translate(22px,0) translateZ(100px) rotateX(-90deg);animation-delay:-3.2s"><svg><use href="#i-link"/></svg></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">How it works</span>
+          <h2>Drop once. Fetch anywhere.</h2>
+          <p class="muted">DropNest never pushes anything at you. Each device keeps its own box; the others come and take what they need.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><h3>Drop</h3><p class="muted">On your phone, use the Share button in WhatsApp, Instagram, Gallery or your browser. On the PC, drag files onto the window or press Paste. Items stay in your box until you delete them.</p></article>
+          <article class="step"><h3>Meet</h3><p class="muted">Open DropNest on both devices on the same Wi-Fi — or turn on hotspot mode on your phone when there is no router. They find each other in seconds.</p></article>
+          <article class="step"><h3>Fetch</h3><p class="muted">Open the other device's box, tick what you want and press Fetch. Files land in your Gallery or Downloads; links and text go straight to your clipboard.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Why DropNest</span>
+          <h2>Built for the two devices you actually use.</h2>
+        </div>
+        <div class="features">
+          <article class="feature"><div class="ico"><svg><use href="#i-hand"/></svg></div><h3>Pull, don't push</h3><p>Nothing arrives uninvited. You browse a box and choose what to take, one item or all of it.</p></article>
+          <article class="feature"><div class="ico"><svg><use href="#i-bolt"/></svg></div><h3>Works without internet</h3><p>Same Wi-Fi is enough. No router around? Your phone's hotspot mode creates a local network in one tap.</p></article>
+          <article class="feature"><div class="ico"><svg><use href="#i-shield"/></svg></div><h3>Encrypted, device to device</h3><p>Every transfer runs over TLS between your own devices. Approve once, trust forever, or protect your box with a PIN.</p></article>
+          <article class="feature"><div class="ico"><svg><use href="#i-share"/></svg></div><h3>Share sheet on Android</h3><p>Photos, PDFs, videos, links — anything an app can share goes into your box, and stays there even if the original is deleted.</p></article>
+          <article class="feature"><div class="ico"><svg><use href="#i-down"/></svg></div><h3>Fast and resumable</h3><p>Parallel streams saturate your Wi-Fi; a dropped connection resumes where it stopped. Live speed and ETA on both ends.</p></article>
+          <article class="feature"><div class="ico"><svg><use href="#i-cube"/></svg></div><h3>Opens right there</h3><p>Tap a photo to view it in the app; PDFs, videos and documents open in the app you already use for them.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Screens</span>
+          <h2>Dark by default. Light if you like.</h2>
+        </div>
+        <div class="gallery">
+          <figure class="win-wrap"><div class="win"><img src="assets/shots/desktop-mybox.webp" alt="DropNest on Windows: the 3D nest with dropped files on the left, contents list on the right" width="1100" height="740" loading="lazy"></div><figcaption>Windows — My box</figcaption></figure>
+          <figure><div class="phone"><img src="assets/shots/phone-devices.webp" alt="DropNest on Android: nearby devices orbiting your phone" width="540" height="1200" loading="lazy"></div><figcaption>Android — Devices</figcaption></figure>
+          <figure><div class="phone"><img src="assets/shots/phone-peer-box.webp" alt="DropNest on Android: browsing a laptop's box and fetching selected files" width="540" height="1200" loading="lazy"></div><figcaption>Android — a laptop's box</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="demo">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Try it in your browser</span>
+          <h2>The interactive prototype, live.</h2>
+          <p class="muted">This is the design the apps were built from — phone and desktop side by side. Drag the nest or the orbit to spin them, tap a device to open its box, and press <strong>Run handoff demo</strong> to watch a full drop-and-fetch between the two.</p>
+        </div>
+        <div class="demo-frame">
+          <iframe src="demo/" title="DropNest interactive prototype" loading="lazy" allow="clipboard-write"></iframe>
+        </div>
+        <p class="demo-note"><a class="btn ghost" href="demo/" target="_blank" rel="noopener">Open the prototype full screen ↗</a></p>
+      </div>
+    </section>
+
+    <section id="download">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="kicker">Download</span>
+          <h2>Get DropNest on both sides.</h2>
+          <p class="muted">Install it on your phone and your PC — the box only makes sense with two devices.</p>
+        </div>
+        <div class="dl">
+          <article class="dl-card">
+            <h3><svg><use href="#i-android"/></svg> Android</h3>
+            <ul><li>Android 8.0 or newer</li><li>Share from any app, hotspot mode, background receiving</li><li>About 15 MB</li></ul>
+            <div class="badges"><a class="store-badge" id="dl-play"><svg><use href="#i-play"/></svg><span class="l"><small>Get it on</small><b>Google Play</b></span></a></div>
+            <p class="direct" id="direct-apk" hidden>Prefer a direct download? <a id="link-apk" href="#">APK (sideload)</a></p>
+          </article>
+          <article class="dl-card">
+            <h3><svg><use href="#i-win"/></svg> Windows</h3>
+            <ul><li>Windows 10 / 11, 64-bit</li><li>Drag &amp; drop, “Open with DropNest”, system tray, start with Windows</li><li>Bundled runtime, nothing else to install</li></ul>
+            <div class="badges"><a class="store-badge" id="dl-ms"><svg style="color:#0a84ff"><use href="#i-win"/></svg><span class="l"><small>Get it from</small><b>Microsoft Store</b></span></a></div>
+            <p class="direct" id="direct-msi" hidden>Prefer a direct download? <a id="link-msi" href="#">MSI installer</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy">
+      <div class="wrap">
+        <div class="privacy-strip">
+          <svg><use href="#i-shield"/></svg>
+          <p><strong>Your files never touch a server.</strong> DropNest has no accounts, no cloud and no analytics. Everything moves directly between your devices on your own network, encrypted. <a href="privacy">Read the privacy policy</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="section-head"><span class="kicker">Questions</span><h2>Good to know</h2></div>
+        <div class="faq">
+          <details><summary>Does DropNest need the internet?</summary><p>No. Devices talk to each other directly over your Wi-Fi. If there is no router — on a train, in a car — turn on hotspot mode on the phone and connect the PC to it.</p></details>
+          <details><summary>Phone to phone, or PC to PC?</summary><p>Yes. Any two devices running DropNest can open each other's box: two Androids, two Windows PCs, or one of each.</p></details>
+          <details><summary>Where do fetched files go?</summary><p>On Android into Pictures, Movies, Music or Download → DropNest (no storage permission needed). On Windows into Downloads\DropNest, or any folder you choose in Settings.</p></details>
+          <details><summary>Can someone on my Wi-Fi read my box?</summary><p>Only if you let them. The default asks you every time a device wants in; you can restrict it to trusted devices or add a PIN. Transfers are encrypted with a per-device certificate.</p></details>
+          <details><summary>iPhone or Mac?</summary><p>The Windows build also compiles for macOS and Linux from the open-source repository. An iPhone version is not available yet.</p></details>
+          <details><summary>Is it free?</summary><p>Yes — free on both stores, no ads, no in-app purchases.</p></details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <a class="brand" href="#top"><img src="assets/logo-192.png" alt=""> DropNest</a>
+      <span>© 2026 DropNest · Built with Kotlin Multiplatform</span>
+      <nav class="links" aria-label="Footer">
+        <a href="privacy">Privacy</a>
+        <a id="github" href="https://github.com/Deveshsamant/DropBoxx">Source</a>
+        <a id="contact" href="#" hidden>Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="links.js"></script>
+  <script>
+    (function () {
+      var L = window.DROPNEST_LINKS || {};
+      function wire(id, url) {
+        var a = document.getElementById(id); if (!a) return;
+        if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; a.classList.remove("soon"); }
+        else { a.classList.add("soon"); a.removeAttribute("target"); if (id.indexOf("dl-") === 0) { a.removeAttribute("href"); a.setAttribute("aria-disabled", "true"); } }
+      }
+      wire("badge-play", L.play); wire("dl-play", L.play);
+      wire("badge-ms", L.msstore); wire("dl-ms", L.msstore);
+      function direct(pid, lid, url) { var p = document.getElementById(pid), a = document.getElementById(lid); if (url) { a.href = url; p.hidden = false; } }
+      direct("direct-apk", "link-apk", L.apk); direct("direct-msi", "link-msi", L.msi);
+      if (L.github) document.getElementById("github").href = L.github;
+      if (L.contact) { var c = document.getElementById("contact"); c.href = "mailto:" + L.contact; c.hidden = false; }
+
+      var btn = document.getElementById("theme"), root = document.documentElement;
+      function paint() { var light = root.dataset.theme === "light"; btn.innerHTML = '<svg width="18" height="18"><use href="#i-' + (light ? "moon" : "sun") + '"/></svg>'; }
+      btn.addEventListener("click", function () {
+        var light = root.dataset.theme !== "light";
+        if (light) root.dataset.theme = "light"; else delete root.dataset.theme;
+        try { localStorage.setItem("dn-theme", light ? "light" : "dark"); } catch (e) {}
+        paint();
+      });
+      paint();
+    })();
+  </script>
+</body>
+</html>
