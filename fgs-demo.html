@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DropNest — foreground service demonstration</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav"><div class="wrap"><a class="brand" href="./"><img src="assets/logo-192.png" alt=""> DropNest</a></div></header>
+  <main class="wrap doc">
+    <span class="kicker">Google Play · permission declaration</span>
+    <h1>FOREGROUND_SERVICE_DATA_SYNC — how DropNest uses it</h1>
+    <p>Package <strong>com.dropnest.app</strong>. Declared task: <strong>Network processing → Other</strong>.</p>
+    <video controls playsinline preload="metadata" style="width:100%;max-width:420px;border-radius:16px;border:1px solid var(--edge-strong);background:#000;display:block" src="media/fgs-demo.mp4"></video>
+    <h2>What the service does</h2>
+    <p>DropNest transfers files directly between the user's own devices over the local Wi-Fi network — there is no cloud. The foreground service keeps the encrypted receive server running so that a transfer the user started from another device completes even when this phone's screen is off or the app is in the background; otherwise Android would kill the connection mid-transfer.</p>
+    <ul>
+      <li>Started only when the user opens the app; never on boot or by a push.</li>
+      <li>Shows a persistent notification ("Ready to receive on …") with a <strong>Stop</strong> action while running.</li>
+      <li>Stops when the user taps Stop, quits the app, or when Android's data-sync time limit is reached (<code>onTimeout</code>).</li>
+      <li>No data leaves the local network; nothing is uploaded to any server.</li>
+    </ul>
+    <h2>What the video shows</h2>
+    <p>The phone opens another device's box, fetches files, and the transfer finishes while DropNest's notification is visible; the received files then open from the Transfers screen.</p>
+    <p class="muted">Privacy policy: <a href="privacy">drop-nest-marketing.vercel.app/privacy</a></p>
+  </main>
+</body>
+</html>
