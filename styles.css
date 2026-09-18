@@ -109,16 +109,6 @@ section { padding-block: clamp(48px, 7vw, 88px); }
 .feature .ico svg { width: 20px; height: 20px; }
 .feature p { color: var(--muted); font-size: .95rem; }
 
-/* gallery */
-.gallery { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 18px; align-items: end; }
-@media (max-width: 900px) { .gallery { grid-template-columns: 1fr 1fr; } .gallery .win { grid-column: 1 / -1; } }
-@media (max-width: 520px) { .gallery { grid-template-columns: 1fr; } }
-.win { border-radius: 14px; overflow: hidden; border: 1px solid var(--edge-strong); box-shadow: 0 30px 60px -30px var(--shadow); background: var(--bg2); }
-.phone { border-radius: 30px; padding: 8px; background: var(--surface2); border: 1px solid var(--edge-strong); box-shadow: 0 30px 60px -30px var(--shadow); }
-.phone img { border-radius: 24px; }
-.gallery figcaption { margin-top: 10px; font-size: .85rem; color: var(--muted); text-align: center; }
-.gallery figure { margin: 0; }
-
 /* live prototype */
 .demo-frame { border-radius: 18px; overflow: hidden; border: 1px solid var(--edge-strong); background: #101220; box-shadow: 0 40px 80px -40px var(--shadow); }
 .demo-frame iframe { display: block; width: 100%; aspect-ratio: 16 / 10; min-height: 420px; border: 0; background: #101220; }
